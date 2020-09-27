@@ -76,10 +76,16 @@ class HomeController extends Controller
             ->where('post.status','=',1)
             ->where('category_name',$category_name)->orderBy('modified_time','DESC')->paginate(18);
 
+
+        $post=DB::table('category')
+            ->where('category_name',$category_name)->first();
+
         $data['share_picture']=get_option('home_share_image');
-        $data['seo_title']= $data['posts']->seo_title;
-        $data['seo_keywords']=$data['posts']->seo_keywords;
-        $data['seo_description']=$data['posts']->seo_meta_content;
+        $data['seo_title']= $post->seo_title;
+        $data['seo_keywords']=$post->seo_keywords;
+        $data['seo_description']=$post->seo_meta_content;
+        $data['page_title']=$post->category_title;
+
 
 $data['category_name']=$category_name;
         return view('website.category',$data);
@@ -136,6 +142,7 @@ $data['category_name']=$category_name;
         $data['seo_title']= $data['post']->seo_title;
         $data['seo_keywords']=$data['post']->seo_keywords;
         $data['seo_description']=$data['post']->seo_content;
+        $data['page_title']=$data['post']->post_title;
 
 
         $related_category= DB::table('post_category_relation')->select('category_id')
