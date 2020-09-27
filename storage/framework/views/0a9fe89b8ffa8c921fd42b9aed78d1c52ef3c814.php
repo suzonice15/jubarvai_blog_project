@@ -17,14 +17,9 @@
 
                     <div class="col-sm-6 col-md-4 col-xs-6" style="float:left">
                         <a href="<?php echo e(url('/')); ?>/post/<?php echo e($sidebar->post_name); ?>"> <img   class="img-responsive" style="background-color: #ddd;
-padding: 4px;width:118%" src="<?php echo e(url('/public/uploads')); ?>/<?php echo e($sidebar->folder); ?>/thumb/<?php echo e($sidebar->feasured_image); ?>" alt="">
+padding: 4px;width:116%" src="<?php echo e(url('/public/uploads')); ?>/<?php echo e($sidebar->folder); ?>/thumb/<?php echo e($sidebar->feasured_image); ?>" alt="">
                         </a>
-                        <h4 style="background: #ddd;
-padding: 7px;
-height: 58px;
-margin-bottom: 20px;
-overflow: hidden;width:102%;" ><a href="<?php echo e(url('/')); ?>/post/<?php echo e($sidebar->post_name); ?>"><?php echo e($sidebar->post_title); ?></a></h4>
-
+                        <a  style="width: 241px;background-color: #ddd;padding: 9px;height: 50px;overflow: hidden;" href="<?php echo e(url('/')); ?>/post/<?php echo e($sidebar->post_name); ?>"><?php echo e($sidebar->post_title); ?></a>
                     </div>
 
 

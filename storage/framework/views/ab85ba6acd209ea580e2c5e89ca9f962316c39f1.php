@@ -21,9 +21,9 @@
                             <li><i class="mr-5 font-12 ion-eye"></i><?php echo e($post->visitor); ?></li>
                         </ul>
 
-                        <div class="col-md-12 col-md-12 col-xs-12">
+                        <div class="col-md-8 col-md-8 col-xs-12">
 
-                            <img  class="img-responsive" src="<?php echo e(url('/public/uploads')); ?>/<?php echo e($post->folder); ?>/<?php echo e($post->feasured_image); ?>">
+                            <img   class="img-responsive" src="<?php echo e(url('/public/uploads')); ?>/<?php echo e($post->folder); ?>/<?php echo e($post->feasured_image); ?>">
 
                         </div>
                         <br>
@@ -68,9 +68,10 @@
 
                             <img src="<?php echo e(url('/public/uploads')); ?>/<?php echo e($rel->folder); ?>/<?php echo e($rel->feasured_image); ?>">
                                     </a>
-                            <h4> <a href="<?php echo e(url('/')); ?>/post/<?php echo e($rel->post_name); ?>"> <?php echo e($rel->post_title); ?></a></h4>
+                                     <a  style="width: 193px;background-color: #ddd;padding: 9px;height: 50px;overflow: hidden;" href="<?php echo e(url('/')); ?>/post/<?php echo e($rel->post_name); ?>"><?php echo e($rel->post_title); ?></a>
 
-                        </div>
+
+                                </div>
                                 <?php } ?>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             <?php endif; ?>

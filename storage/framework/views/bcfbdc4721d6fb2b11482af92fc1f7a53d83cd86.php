@@ -1,8 +1,7 @@
-@extends('layouts.master')
-@section('pageTitle')
+<?php $__env->startSection('pageTitle'); ?>
     Update Home Page Website Information
-@endsection
-@section('mainContent')
+<?php $__env->stopSection(); ?>
+<?php $__env->startSection('mainContent'); ?>
     <style>
         .has-error {
             border-color: red;
@@ -11,9 +10,9 @@
     <div class="box-body">
 
 
-        <form action="{{ url('admin/homepage/setting') }}" class="form-horizontal" method="post"
+        <form action="<?php echo e(url('admin/homepage/setting')); ?>" class="form-horizontal" method="post"
               enctype="multipart/form-data">
-            @csrf
+            <?php echo csrf_field(); ?>
 
             <div class="box" style="border: 2px solid #ddd;">
                 <div class="box-header with-border" style="background-color: green;color:white;">
@@ -77,7 +76,7 @@
                 $.ajax({
                     data: {url: word, _token: _token},
                     type: "POST",
-                    url: "{{url('category-urlcheck')}}",
+                    url: "<?php echo e(url('category-urlcheck')); ?>",
                     success: function (result) {
 
                         // $('#categoryError').html(result);
@@ -104,6 +103,8 @@
 
 
 
-@endsection
+<?php $__env->stopSection(); ?>
 
 
+
+<?php echo $__env->make('layouts.master', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Xampp\htdocs\jubarvai_blog_project\resources\views/admin/setting/home_page_setting.blade.php ENDPATH**/ ?>

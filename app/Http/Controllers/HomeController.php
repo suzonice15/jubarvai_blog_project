@@ -40,6 +40,10 @@ class HomeController extends Controller
     }
 
     public  function blog(){
+        $data['share_picture']=get_option('home_share_image');
+        $data['seo_title']=get_option('home_seo_title');
+        $data['seo_keywords']=get_option('home_seo_keywords');
+        $data['seo_description']=get_option('home_seo_content');
 
         $data['posts']=DB::table('post')
             ->select('post_title','post_name','modified_time','user','folder','feasured_image')
@@ -56,19 +60,7 @@ class HomeController extends Controller
         }
     }
 
-    function liveProductSearch(Request $request)
-    {
 
-        if ($request->ajax()) {
-
-            $query = $request->get('product');
-            $query = str_replace(" ", "%", $query);
-            $products = DB::table('product')->where('sku', 'LIKE', '%' . $query . '%')
-                ->orWhere('product_title', 'LIKE', '%' . $query . '%')
-                ->orderBy('product.product_id', 'desc')->paginate(40);
-            return view('website.liveProductSearch', compact('products'))->render();
-        }
-    }
     /**
      * Show the form for creating a new resource.
      *
@@ -77,12 +69,17 @@ class HomeController extends Controller
     public function category($category_name)
     {
 
+
         $data['posts'] =DB::table('post')
            ->join('post_category_relation','post_category_relation.post_id','=','post.post_id')
             ->join('category','category.category_id','=','post_category_relation.category_id')
             ->where('post.status','=',1)
             ->where('category_name',$category_name)->orderBy('modified_time','DESC')->paginate(18);
 
+        $data['share_picture']=get_option('home_share_image');
+        $data['seo_title']= $data['posts']->seo_title;
+        $data['seo_keywords']=$data['posts']->seo_keywords;
+        $data['seo_description']=$data['posts']->seo_meta_content;
 
 $data['category_name']=$category_name;
         return view('website.category',$data);
@@ -126,7 +123,8 @@ $data['category_name']=$category_name;
      */
     public function post($product_name)
     {
-       // $data['categories']=DB::table('category')->select('category_id','category_title','category_name')->where('parent_id',0)->get();
+
+        // $data['categories']=DB::table('category')->select('category_id','category_title','category_name')->where('parent_id',0)->get();
         $data['post']=DB::table('post')->select('*')
             ->where('post_name',$product_name)->first();
       $row_data['visitor'] = $data['post']->visitor+1;
@@ -134,6 +132,11 @@ $data['category_name']=$category_name;
 
 
        // $product_id =$request->product_id;
+        $data['share_picture']=get_option('home_share_image');
+        $data['seo_title']= $data['post']->seo_title;
+        $data['seo_keywords']=$data['post']->seo_keywords;
+        $data['seo_description']=$data['post']->seo_content;
+
 
         $related_category= DB::table('post_category_relation')->select('category_id')
             ->join('post','post_category_relation.post_id','=','post.post_id')

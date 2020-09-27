@@ -217,10 +217,10 @@
 
                                 <div  data-tip="Copy to clipboard">
                                     <span style="color:black;text-align: center"><b>Promo Code</b></span>
-                                    <input  style="margin-top: 15px;margin-bottom: 5px;" id="{{$left->left_add_id}}" onclick="copyToClipboard('{{$left->left_add_id}}')" type="text" value="{{$left->promo_link}}">
+                                    <input  style="margin-top: 15px;margin-bottom: 5px;" id="{{$left->left_add_id}}" onclick="mobile_copyToClipboard('{{$left->left_add_id}}')" type="text" value="{{$left->promo_link}}">
                                 </div>
                                 <p    style="display:none;color: green;text-align: center;font-weight: bold"
-                                      id="success_{{$left->left_add_id}}">Copied the text</p>
+                                      id="mobile_success_{{$left->left_add_id}}">Copied the text</p>
 
                                 <center>
 
@@ -334,26 +334,51 @@
 
 <br/>
 
-                    <div class="col-sm-12 col-md-12 col-xs-12 " >
-                    <?php
+                    <style>
+
+                        .home_page_title{
+
+                            width: 208px;
+                            background-color: #ddd;
+                            padding: 9px;
+                            height: 50px;
+                            overflow: hidden;
+                            display: block;
+                            margin-top: -6px;
+                            margin-bottom: 5px;
+                        }
+                        @media (width: 576px) {
+                            .home_page_title{
+
+                                width: 208px;
+                                background-color: #ddd;
+                                padding: 9px;
+                                height: 50px;
+                                overflow: hidden;
+                                display: block;
+                                margin-top: -6px;
+                                margin-bottom: 5px;
+                            }
+                        }
+
+
+                    </style>
+
+                     <?php
                     if($posts){
 
                     foreach ($posts as $sidebar) {
                     ?>
 
-                    <div class="col-sm-6 col-xs-6 col-md-4" style="float:left">
+                    <div class="col-sm-12 col-xs-12 col-md-4" style="float:left">
                         <a href="{{url('/')}}/post/{{$sidebar->post_name}}">
                             <img class="img-responsive"
                                  style="background-color: #ddd;
 padding: 4px;width:118%
 " src="{{ url('/public/uploads') }}/{{ $sidebar->folder }}/thumb/{{ $sidebar->feasured_image }}" alt="">
                         </a>
-                        <h4 style="background: #ddd;
-padding: 7px;
-height: 58px;
-margin-bottom: 20px;
-overflow: hidden;width: 102%;">
-                            <a href="{{url('/')}}/post/{{$sidebar->post_name}}">{{$sidebar->post_title}}</a></h4>
+
+                            <a class="home_page_title"  href="{{url('/')}}/post/{{$sidebar->post_name}}">{{$sidebar->post_title}}</a>
 
                     </div>
 
@@ -363,7 +388,7 @@ overflow: hidden;width: 102%;">
                     }
 
                     ?>
-                    </div>
+
                     <br/>
 
 
@@ -415,6 +440,44 @@ overflow: hidden;width: 102%;">
             var element = document.getElementById(target);
             var text = element.value;
             $('#success_' + target).show();
+
+            CopyToClipboard(text);
+
+        }
+
+        function CopyToClipboard(text) {
+
+            if (window.clipboardData && window.clipboardData.setData) {
+                // IE specific code path to prevent textarea being shown while dialog is visible.
+                return clipboardData.setData("Text", text);
+
+            } else if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
+                var textarea = document.createElement("textarea");
+                textarea.textContent = text;
+                textarea.style.position = "fixed";  // Prevent scrolling to bottom of page in MS Edge.
+                document.body.appendChild(textarea);
+                textarea.select();
+
+                try {
+                    return document.execCommand("copy");  // Security exception may be thrown by some browsers.
+                } catch (ex) {
+                    console.warn("Copy to clipboard failed.", ex);
+                    return false;
+                } finally {
+                    document.body.removeChild(textarea);
+                }
+            }
+        }
+
+    </script>
+
+    <script>
+
+        function mobile_copyToClipboard(target) {
+
+            var element = document.getElementById(target);
+            var text = element.value;
+            $('#mobile_success_' + target).show();
 
             CopyToClipboard(text);
 

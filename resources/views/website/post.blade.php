@@ -22,9 +22,9 @@
                             <li><i class="mr-5 font-12 ion-eye"></i>{{$post->visitor}}</li>
                         </ul>
 
-                        <div class="col-md-12 col-md-12 col-xs-12">
+                        <div class="col-md-8 col-md-8 col-xs-12">
 
-                            <img  class="img-responsive" src="{{ url('/public/uploads') }}/{{ $post->folder }}/{{ $post->feasured_image }}">
+                            <img   class="img-responsive" src="{{ url('/public/uploads') }}/{{ $post->folder }}/{{ $post->feasured_image }}">
 
                         </div>
                         <br>
@@ -69,9 +69,10 @@
 
                             <img src="{{ url('/public/uploads') }}/{{ $rel->folder }}/{{ $rel->feasured_image }}">
                                     </a>
-                            <h4> <a href="{{url('/')}}/post/{{$rel->post_name}}"> {{$rel->post_title}}</a></h4>
+                                     <a  style="width: 193px;background-color: #ddd;padding: 9px;height: 50px;overflow: hidden;" href="{{url('/')}}/post/{{$rel->post_name}}">{{$rel->post_title}}</a>
 
-                        </div>
+
+                                </div>
                                 <?php } ?>
                             @endforeach
                             @endif
