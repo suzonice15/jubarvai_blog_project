@@ -9,21 +9,7 @@
         }
     </style>
     <div class="box-body">
-        @if (count($errors) > 0)
-            <div class=" alert alert-danger alert-dismissible">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                <h4><i class="icon fa fa-ban"></i> Alert!</h4>
-                <ul>
 
-                    @foreach ($errors->all() as $error)
-
-                        <li style="list-style: none">{{ $error }}</li>
-
-                    @endforeach
-
-                </ul>
-            </div>
-        @endif
 
 
         <form action="{{ url('admin/category/store') }}" class="form-horizontal" method="post"
@@ -37,7 +23,7 @@
                 <!-- /.box-header -->
                 <div class="box-body">
                     <div class="row">
-                        <div class="col-md-5 col-sm-12" style="margin-left: 10px">
+                        <div class="col-md-12 col-sm-12" style="padding: 31px;">
                             <div class="form-group">
                                 <label for="category_title">Category Name<span class="required">*</span></label>
                                 <input required type="text" id="category_title" class="form-control the_title"
@@ -60,35 +46,13 @@
                                     <option value="0">Unpublished</option>
                                 </select>
                             </div>
-                            <!-- /.form-group -->
-                        </div>
-                        <!-- /.col -->
-                        <div class="col-md-6 col-sm-12" style="margin-left: 20px">
-                            <div class="form-group">
-                                <label for="parent_id">Select Parent</label>
-                                <select required class="form-control select2 " name="parent_id"
-                                        tabindex="-1"
-                                        aria-hidden="true">
-                                    <option value="0" style="background-color: red;">--- choose ---</option>
-
-                                    @foreach($categories as $category)
-
-                                        <option value="{{$category->category_id}}">{{$category->category_title}}</option>
-                                    @endforeach
-                                </select>
-                            </div>
                             <div class="form-group ">
                                 <label for="rank_order">Rank Order</label>
                                 <input type="text" class="form-control" name="rank_order" value="">
                             </div>
-                            <div class="form-group featured-image">
-                                <label>Category  Image<span class="required"> (200*200)</span></label>
-                                <input   type="file" class="form-control" name="featured_image"/>
-
-                            </div>
-
+                            <!-- /.form-group -->
                         </div>
-                        <!-- /.col -->
+
                     </div>
                     <!-- /.row -->
                 </div>

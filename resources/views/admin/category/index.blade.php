@@ -24,11 +24,11 @@
             <thead>
             <tr>
                 <th>Sl</th>
-                <th>Category Picture</th>
+
                 <th>Category Name</th>
                 <th>Category Parmalink </th>
-                <th>Parent </th>
-                <th>Total Products </th>
+
+
                  <th>Publised Status </th>
                  <th> Created date </th>
                 <th >Action </th>

@@ -111,13 +111,7 @@ class SettingController extends Controller
         $setting_row = DB::table('deafult_seating')->where('default_setting_id', 1)->first();
 
 
-        $row_data['phone']= $request->phone;
-        $row_data['phone_order']= $request->phone_order;
-        $row_data['shipping_charge_in_dhaka']= $request->shipping_charge_in_dhaka;
-        $row_data['shipping_charge_out_of_dhaka']= $request->shipping_charge_out_of_dhaka;
-        $row_data['default_product_terms']= $request->default_product_terms;
-        $row_data['bkash']= $request->bkash;
-        $row_data['address']= $request->address;
+        $row_data['site_title']= $request->site_title;
 
         $image = $request->file('logo');
         if ($image) {

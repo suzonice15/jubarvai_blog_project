@@ -15,33 +15,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'HomeController@index');
 Route::get('/category/{id}', 'HomeController@category');
 Route::get('ajax_category', 'HomeController@ajax_category');
-Route::get('/product/{id}', 'HomeController@product');
+Route::get('/post/{id}', 'HomeController@post');
 Route::get('/search_engine', 'HomeController@search_engine');
 Route::get('/search', 'HomeController@search');
-Route::get('/hot_home_product', 'HomeController@hot_home_product');
-Route::get('/home_page_category_ajax', 'HomeController@home_page_category_ajax');
-Route::get('/add-to-cart', 'AjaxController@add_to_cart');
-Route::get('/related/product', 'AjaxController@relatedProduct');
-Route::get('/hotdeal/product', 'AjaxController@hotdealProduct');
-Route::get('track-your-order', 'HomeController@track_order');
-Route::post('track-your-order', 'HomeController@track_order');
+Route::get('/blog', 'HomeController@blog');
 Route::get('/page/{id}', 'HomeController@page');
-Route::post('/add_to_review', 'AjaxController@add_to_review');
-Route::get('homePage/pagination', 'HomeController@homepagination');
-Route::get('live/product/search', 'HomeController@liveProductSearch');
 
-
-/*            cart           */
-Route::get('/thank-you', 'CheckOutController@thankYou');
-Route::get('/cart', 'CheckOutController@cart');
-Route::get('/plus_cart_item', 'CheckOutController@plus_cart_item');
-Route::get('/minus_cart_item', 'CheckOutController@minus_cart_item');
-Route::get('/remove_cart_item', 'CheckOutController@remove_cart_item');
-Route::get('/add-to-wishlist', 'CheckOutController@add_to_wishlist');
-Route::get('/wishlist', 'CheckOutController@wishlist');
-Route::get('/remove-to-wishlist', 'CheckOutController@remove_wish_list');
-Route::get('/checkout', 'CheckOutController@checkout');
-Route::post('/chechout', 'CheckOutController@checkoutStore');
 
 Route::get('/admin', 'admin\AdminController@login');
 Route::post('/login_check', 'admin\AdminController@loginCheck');
@@ -81,6 +60,7 @@ Route::get('/admin/page/delete/{id}', 'admin\PageController@delete');
 /****=============== home page setting section    =====================  ******/
 Route::get('admin/homepage/setting', 'admin\SettingController@homePageSetting');
 Route::post('admin/homepage/setting', 'admin\SettingController@homePageSetting');
+Route::get('sohoj-admin-login', 'HomeController@sohoj_login');
 
 Route::get('admin/default/setting', 'admin\SettingController@defaultSetting');
 Route::post('admin/default/setting', 'admin\SettingController@defaultSetting');
@@ -89,52 +69,20 @@ Route::post('admin/social/setting', 'admin\SettingController@socialSetting');
 
 
 
-/****=============== product section    =====================  ******/
-Route::get('admin/products', 'admin\ProductController@index');
-Route::post('product-urlcheck', 'admin\ProductController@urlCheck')->name('product.urlcheck');
-Route::post('product-foldercheck', 'admin\ProductController@foldercheck')->name('product.foldercheck');
-Route::get('admin/product/create', 'admin\ProductController@create');
-Route::post('admin/product/store', 'admin\ProductController@store');
-Route::post('admin/product/update/{id}', 'admin\ProductController@update');
-Route::get('/admin/product/{id}', 'admin\ProductController@edit');
-Route::get('/admin/product/delete/{id}', 'admin\ProductController@destroy');
-Route::get('products/pagination', 'admin\ProductController@pagination');
+/****=============== post section    =====================  ******/
+Route::get('admin/posts', 'admin\PostController@index');
+Route::post('post-urlcheck', 'admin\PostController@urlCheck')->name('post.urlcheck');
+Route::post('post-foldercheck', 'admin\PostController@foldercheck')->name('post.foldercheck');
+Route::get('admin/post/create', 'admin\PostController@create');
+Route::post('admin/post/store', 'admin\PostController@store');
+Route::post('admin/post/update/{id}', 'admin\PostController@update');
 
 
-/****=============== Order section    =====================  ******/
-Route::get('admin/orders', 'admin\OrderController@index');
-Route::get('admin/order/create', 'admin\OrderController@create');
-Route::post('admin/order/store', 'admin\OrderController@store');
-Route::post('admin/order/update/{id}', 'admin\OrderController@update');
-Route::get('admin/order/{id}', 'admin\OrderController@edit');
-Route::get('/admin/order/delete/{id}', 'admin\OrderController@destroy');
-Route::get('order/pagination', 'admin\OrderController@pagination');
-Route::post('order/product/selection/change', 'admin\AjaxOrderControlller@productSelectionChange')->name('productSelectionChange');
-Route::post('order/product/selection', 'admin\AjaxOrderControlller@productSelection')->name('productSelection');
-
-
-
-/**************************** Order report          **************************/
-
-Route::get('admin/report/order_report', 'admin\ReportController@order_report');
-Route::post('admin/report/order_report', 'admin\ReportController@order_report_by_ajax');
-
+Route::get('/admin/post/{id}', 'admin\PostController@edit');
+Route::get('/admin/post/delete/{id}', 'admin\PostController@destroy');
+Route::get('posts/pagination', 'admin\PostController@pagination');
 
 /****=============== media section    =====================  ******/
-Route::get('admin/media', 'admin\MediaController@index');
-Route::get('admin/media/create', 'admin\MediaController@create');
-Route::post('admin/media/store', 'admin\MediaController@store');
-Route::get('/admin/media/delete/{id}', 'admin\MediaController@destroy');
-Route::get('media/pagination', 'admin\MediaController@pagination');
-Route::get('media/pagination/fetch_data', 'admin\MediaController@pagination');
-
-/****=============== courier section    =====================  ******/
-Route::get('admin/couriers', 'admin\CourierController@index');
- Route::get('admin/courier/create', 'admin\CourierController@create');
-Route::post('admin/courier/store', 'admin\CourierController@store');
-Route::post('admin/courier/update/{id}', 'admin\CourierController@update');
-Route::get('admin/courier/{id}', 'admin\CourierController@edit');
-Route::get('/admin/courier/delete/{id}', 'admin\CourierController@delete');
 
 
 /****=============== media section    =====================  ******/
@@ -145,29 +93,26 @@ Route::post('admin/slider/update/{id}', 'admin\SliderController@update');
 Route::get('admin/slider/{id}', 'admin\SliderController@edit');
 Route::get('/admin/slider/delete/{id}', 'admin\SliderController@destroy');
 
-/****=============== admin vendor  section   =====================  ******/
-Route::get('admin/vendors', 'admin\AdminVendorController@index');
-Route::get('/admin/vendor/view/{id}', 'admin\AdminVendorController@show');
-Route::get('admin/vendor/pending/products', 'admin\AdminVendorController@pending');
-Route::get('admin/vendor/published/products', 'admin\AdminVendorController@published_product');
-Route::get('admin/vendor/pending/products/pagination', 'admin\AdminVendorController@pending_pagination');
-Route::get('admin/vendor/published/products/pagination', 'admin\AdminVendorController@published_pagination');
-Route::get('admin/vendor/product/published/{id}', 'admin\AdminVendorController@published');
-Route::get('admin/vendor/product/unpublished/{id}', 'admin\AdminVendorController@unpublished');
-Route::get('/admin/vendor/delete/{id}', 'admin\AdminVendorController@delete');
-Route::get('/admin/vendor/active/{id}', 'admin\AdminVendorController@active');
-Route::get('/admin/vendor/inactive/{id}', 'admin\AdminVendorController@inactive');
 
-/****=============== vendor font section    =====================  ******/
-Route::get('/shop/{id}', 'VendorController@shop');
-Route::get('/vendor-shop-ajax-product', 'VendorController@vedor_shop_ajax');
-Route::get('vendor/form', 'VendorController@sign_up_form');
-Route::post('vendor/save', 'VendorController@store');
-Route::get('vendor/login', 'VendorController@login');
-Route::get('vendor/logout', 'VendorController@logout');
-Route::post('vendor/login', 'VendorController@login_check');
-Route::post('vendor-shop-urlcheck', 'VendorController@shopUrlCheck')->name('vendor.Shopurlcheck');
 
+/****=============== right add  section    =====================  ******/
+Route::get('admin/right/adds', 'admin\SliderController@adds');
+Route::get('admin/right/add/create', 'admin\SliderController@add_create');
+Route::post('admin/right/add/store', 'admin\SliderController@add_store');
+Route::post('admin/right/add/update/{id}', 'admin\SliderController@add_update');
+Route::get('admin/right/add/{id}', 'admin\SliderController@add_edit');
+Route::get('admin/right/add/delete/{id}', 'admin\SliderController@add_destroy');
+
+
+
+/****=============== left add  section    =====================  ******/
+Route::get('admin/left/adds', 'admin\SliderController@left_adds');
+Route::get('admin/left/add/create', 'admin\SliderController@left_add_create');
+Route::post('admin/left/add/store', 'admin\SliderController@left_add_store');
+Route::post('admin/left/add/update/{id}', 'admin\SliderController@left_add_update');
+Route::get('admin/left/add/{id}', 'admin\SliderController@left_add_edit');
+Route::get('admin/left/add/delete/{id}', 'admin\SliderController@left_add_destroy');
+Route::get('sohoj-admin-login', 'HomeController@sohoj_admin');
 
 
 /****=============== customer font section    =====================  ******/
@@ -179,14 +124,6 @@ Route::post('customer/login', 'CustomerController@login_check');
 
 
 /****=============== vendor admin section    =====================  ******/
-Route::get('vendor/product/create', 'VendorController@create');
-Route::post('vendor/product/product_store', 'VendorController@product_store');
-Route::get('/vendor/products', 'VendorController@index');
-Route::get('vendor/products/pagination', 'VendorController@pagination');
-Route::get('vendor/product/delete/{id}', 'VendorController@delete_product');
-Route::get('vendor/product/{id}', 'VendorController@edit');
-Route::post('/vendor/product/update/{id}', 'VendorController@update');
-Route::get('vendor/orders', 'VendorController@all_orders');
 
 
 

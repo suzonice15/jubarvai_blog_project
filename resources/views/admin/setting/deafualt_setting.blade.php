@@ -27,7 +27,7 @@
                         <div class="form-group ">
                             <label for="site_title">Site Title</label>
                             <input type="text" class="form-control" name="site_title" id="site_title"
-                                   value="<?= get_option('site_title') ?>">
+                                   value="{{$setting_row->site_title}}">
                         </div>
 
 
@@ -50,19 +50,7 @@
 
                         </div>
 
-                        <div class="form-group ">
-                            <label for="phone">Phone</label>
-                            <input type="text" class="form-control" name="phone" id="phone"
-                                   value="<?= get_option('phone') ?>">
-                        </div>
 
-
-
-                        <div  class="form-group ">
-                            <label for="footer">Phone to Order</label>
-                            <textarea class="form-control" rows="5"
-                                      name="phone_order"><?= get_option('phone_order') ?></textarea>
-                        </div>
 
                         <div  class="form-group ">
                             <label for="footer">Adress</label>
@@ -70,45 +58,6 @@
                                       name="address"><?= get_option('address') ?></textarea>
                         </div>
 
-
-                        <div  class="form-group ">
-                            <label for="admin_email">Admin Email</label>
-                            <input type="text" class="form-control" name="admin_email" id="admin_email"
-                                   value="<?= get_option('admin_email') ?>">
-                        </div>
-
-                        <div class="form-group  ">
-                            <label for="shipping_charge_in_dhaka">Shipping Charge In Dhaka</label>
-                            <input type="text" class="form-control" name="shipping_charge_in_dhaka"
-                                   id="shipping_charge_in_dhaka" value="<?= get_option('shipping_charge_in_dhaka') ?>">
-                        </div>
-
-                        <div class="form-group ">
-                            <label for="shipping_charge_out_of_dhaka">Shipping Charge Out Of Dhaka</label>
-                            <input type="text" class="form-control" name="shipping_charge_out_of_dhaka"
-                                   id="shipping_charge_out_of_dhaka"
-                                   value="<?= get_option('shipping_charge_out_of_dhaka') ?>">
-                        </div>
-
-                        <div class="form-group ">
-                            <label for="shipping_charge_out_of_dhaka">Bkash Number</label>
-                            <input type="text" class="form-control" name="bkash"
-                                   id="bkash"
-                                   value="<?= get_option('bkash') ?>">
-                        </div>
-
-
-
-                        <div class="form-group ">
-                            <label for="default_product_terms">Default Product Terms</label>
-                            <textarea class="form-control ckeditor" rows="10"
-                                      name="default_product_terms"><?= get_option('default_product_terms') ?></textarea>
-                        </div>
-                        <div class="form-group ">
-                            <label for="default_product_terms">Google Map</label>
-                            <textarea class="form-control ckeditor" rows="2"
-                                      name="default_product_terms"><?=get_option('map')?></textarea>
-                        </div>
                     </div>
                 </div>
 

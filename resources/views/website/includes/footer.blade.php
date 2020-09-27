@@ -1,232 +1,110 @@
 
-<!--<footer class="navbar-fixed-bottom " style="width: 100%;background: none;" id="SidebarCardMenu">-->
-<footer class="navbar-fixed-bottom area-mobile-off" style="width: 100%;background: none;" >
-    <a href="{{url('/')}}/cart">
-        <!--Apps button start-->
-        <div  style="height: auto;width: 80px;background: #fff ;position: absolute;z-index: 9999;bottom: 450px;right: 0;border-radius: 5px 0 0 5px;border: 1px solid #1D70BA;" class="cart_anchor">
 
+<footer class="bg-191 pos-relative color-ccc bg-primary pt-50">
+    <div class="abs-tblr pt-50 z--1 text-center">
+        <div class="h-80 pos-relative"><div class="bg-map abs-tblr opacty-1"></div></div>
+    </div>
 
-            <?php  $items = \Cart::getContent();
-
-            $total = 0;
-            $quantity = 0;
-            foreach ($items as $row) {
-
-                $total = \Cart::getTotal();
-
-                $quantity = Cart::getContent()->count();
-
-            }
-
-            ?>
-                 <span id="CartDetailsTotal"  style="padding: 8px 0;width:100%;display: inline-block;color:#000;font-size:14px;font-weight:bold;text-align:center">
-                         <span class="value">@money($total)</span>   Tk.
-                    </span>
-
-            <span  style="width:100%;display: inline-block; background: #00255f ; color: #fff;font-weight:bold;padding:2px;text-align:center;border-radius: 0 0 0 5px;">
-                        <i class="fa fa-shopping-cart " title="My Cart" style="    font-size: 30px;"> </i>
-                        <span id="totalCartItems2">
-                            <span class="count"><?=$quantity?></span> Items
-                        </span>
-                    </span>
-
-
-        </div>
-    </a>
-
-    <!--Apps button end-->
-</footer>
-
-
-
-
-
-<footer class="navbar-default" style="background: #094809">
-    <div class="container" style="padding-top: 25px;  padding-bottom: 25px;">
-
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12" >
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-zero" >
-                <h4 style="font-weight: bold;">Payment System</h4>
-                <img style="cursor: pointer"  src="http://www.ajibto.com/image/manufacturer_logo/pay.jpg" alt="ajibto" title="ajibto">
-
-                <div class="social-container">
-                    <ul class="social-icons">
-                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
-                        <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 padding-zero" >
-
-
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" >
-                <h4 style="font-weight: bold;">Solehinbd Shop</h4>
-                <ul >
-                    <li class="fotter-menu-padding"><a href="{{url('/')}}/about-us" title="Login" class="font-color1">About Us</a></li>
-                    <li class="fotter-menu-padding"><a href="{{url('/')}}/delivery-payment" title="Login" class="font-color1">Contact Us</a></li>
-                    <li class="fotter-menu-padding"><a href="{{url('/')}}/replace-refund" title="Login" class="font-color1">Replace & Refund</a></li>
-                </ul>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4" >
-                <h4 style="font-weight: bold;">  Customer Care</h4>
-                <ul >
-                    <li class="fotter-menu-padding"><a href="{{url('/')}}/about-us" title="Login" class="font-color1">Terms and Conditions</a></li>
-                     <li class="fotter-menu-padding"><a href="{{url('/')}}/replace-refund" title="Login" class="font-color1">Return and Refund Policy</a></li>
-                    <li class="fotter-menu-padding"><a href="{{url('/')}}/replace-refund" title="Login" class="font-color1">Track Your Order</a></li>
-
-                </ul>
-            </div>
-
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 padding-zero" >
-                <h4 style="font-weight: bold;">Office Address  </h4>
-
-                <address style="color: #666;font-weight: normal; font-size: 14px;margin-bottom: 10px;">
-
-                    236/2 West Shewrapara <br>
-                    mirpur 2, Dhaka-1216 <br><br>
-                    <strong>Help Line: 015711-33188</strong>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-sm-4">
+                <h5 class="f-title"><b>Begambleaware </b></h5>
+                <address>
+                    TopBettingSite24.com Copyright © 2019 - 2020.
+Topbettingsite24.com does not offer betting services. Data and information are provided for informational and entertainment purposes only, and are not intended for investment or other purposes. Playing real money carries high level of financial risk and may cause you financial problems. If you have gambling addiction problems we recommend you to visit www.gamcare.org.uk Or www.begambleaware.co.uk and ask for help.
+Gamble responsibly 18+
                 </address>
+            </div><!-- col-sm-2 -->
 
 
-                <br>
-                <br>
-            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4">
+                <h5 class="f-title"><b>Recent Category</b></h5>
+                <ul class="mb-30 list-hover list-block list-a-ptb-5">
+                    <?php
+                    $categorys=DB::table('category')
+                        ->select('category_title','category_name')
+                        ->where('status',1)->orderBy('category_id','desc')->paginate(6);
+                    ?>
+                    <?php
+                    if($categorys){
 
-        </div>
+                    foreach ($categorys as $category) {
+                    ?>
+                    <li><a href="{{url('/')}}/category/{{$category->category_title}}">{{$category->category_title}}</a></li>
 
 
+                    <?php }} ?>               </ul>
+            </div><!-- col-sm-2 -->
+
+            <div class="col-lg-4 col-md-8 col-sm-8">
+                <div class="pr-10 pr-sm-0">
+                    <h5 class="f-title"><b>RECENT POST</b></h5>
+                    <?php
+                    $sidebars=DB::table('post')
+                        ->select('post_title','post_name','modified_time','visitor','folder','feasured_image')
+                        ->where('status',1)->orderBy('post_id','desc')->paginate(2);
+                    ?>
+                    <?php
+                    if($sidebars){
+
+                        foreach ($sidebars as $sidebar) {
+                            ?>
+                    <div class="sided-80x mb-30">
+                        <a class="s-left" href="#">
+                            <img src="{{ url('/public/uploads') }}/{{ $sidebar->folder }}/thumb/{{ $sidebar->feasured_image }}" alt="">
+                        </a><!-- s-left -->
+
+                        <div class="s-right pl-10">
+                            <h5><a href="#"><b>{{$sidebar->post_title}}</b></a></h5>
+                            <ul class="mtb-5 list-li-mr-20 color-ash">
+                                <li><i class="mr-5 font-12 ion-clock"></i>{{ date("M d Y",strtotime($sidebar->modified_time)) }}</li>
+                                <li><i class="mr-5 font-12 ion-eye"></i>{{$sidebar->visitor}}</li>
+                            </ul>
+                        </div><!-- s-left -->
+                    </div><!-- sided-80x -->
+
+                    <?php }
+                    }?>
 
 
+                </div><!--pr-10 -->
+            </div><!-- col-sm-4 -->
 
-    </div>
-    </div>
+        </div><!-- row -->
+
+        <div class="mt-20 brdr-ash-1 opacty-4"></div>
+
+
+    </div><!-- container -->
+
+    <div class="bg-dark-primary ptb-15 text-left">
+        <div class="container-fluid">
+            <div class="row">
+
+                <div class="col-sm-12 col-md-12">
+                    <p class="text-md-center font-9 pt-5 mtb-5"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;<script>document.write(new Date().getFullYear());</script>
+                       devoloped by shahinul islam sujon
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                </div><!-- col-sm-3 -->
+
+            </div><!-- row -->
+
+        </div><!-- container -->
+    </div><!-- container -->
 </footer>
 
-<footer class="navbar-default" style="background: green;color: white;">
-    <div class="container" style="padding-top: 10px;">
+<!-- SCIPTS -->
 
 
 
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 footer-seo-box">
+<script src="{{ asset('assets/font_end')}}/plugin-frameworks/tether.min.js"></script>
 
+<script src="{{ asset('assets/font_end')}}/plugin-frameworks/bootstrap.js"></script>
 
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-zero" >
-
-                <p class="text-center" style="margin: 20px 0;font-weight: bold;color:white">@copyright  2020  Devoloped by <a style="color:white" href="https://web.facebook.com/shahinulislam.sujon.5" target="_blank">Developed by Shahinul Islam Sujon </a></p>
-            </div>
-
-        </div>
-    </div>
-</footer>
-
-
-
-
-
-
-<!--<script src="front_asset/js/vendor/jquery-1.11.3.min.js"></script>-->
-<script async  type="text/javascript" src="{{ asset('assets/font_end/')}}/js/jquery.min.js"></script>
-<script async  type="text/javascript" src="{{ asset('assets/font_end/')}}/js/bootstrap.min.js"></script>
-<script async  type="text/javascript" src="{{ asset('assets/font_end/')}}/js/stellarnav.js"></script>
-<script async  type="text/javascript" src="{{ asset('assets/font_end/')}}/js/owl.carousel.min.js"></script>
-<script async type="text/javascript" src="https://sohojbuy.com/assets/font_end/dist/xzoom.min.js"></script>
-<script async type="text/javascript" > var base_url ="{{url('/')}}";</script>
-<script async  type="text/javascript" src="{{ asset('assets/font_end/')}}/js/custom.js"></script>
-
+<script src="{{ asset('assets/font_end')}}/common/scripts.js"></script>
+<script src="{{ asset('assets/font_end')}}/sharetastic.js"></script>
 
 
 </body>
-
 </html>
-<style>
-    .alert-box-arrow{
-        width: 0;
-        height: 0;
-        border-left: 12px solid transparent;
-        border-right: 12px solid transparent;
-        border-bottom: 15px solid #F6F6F6;
-        margin-top: -15px;
-        position: absolute;
-    }
-</style>
-
-
-<script type="text/javascript">
-    $(document).ready(function($) {
-        jQuery('.stellarnav').stellarNav({
-            theme: 'dark',
-            breakpoint: 960,
-            position: 'left',
-            phoneBtn: '<?=get_option('phone')?>',
-            locationBtn: '<?=get_option('map')?>'
-        });
-    });
-
-</script>
-
-
-<script>
-    $(document).on('click','.add_to_cart',function () {
-        let product_id=  $(this).data("product_id"); // will return the number 123Informatica
-        let picture=  $(this).data("picture"); // will return the number 123
-        $('.add_to_cart').text('একটু অপেক্ষা করুন ......');
-
-        var quntity = document.getElementById("quantity").innerHTML;
-
-
-        if(typeof quntity ==='undefined'){
-            quntity=1;
-        } else {
-            quntity=quntity;
-        }
-
-        $.ajax({
-            type:"GET",
-            url:"{{url('add-to-cart')}}?product_id="+product_id+"&picture="+picture+"&quntity="+quntity,
-
-            success:function(data)
-            {
-
-                $('.add_to_cart').text('কার্ডে প্রোডাক্ট অ্যাড করা হইসে ');
-
-                $('body .count').text(data.result.count);
-                $('body .value').text(data.result.total);
-            }
-        })
-
-    })
-</script>
-<script>
-    $(document).on('click','.buy-now-cart',function () {
-        let product_id=  $(this).data("product_id"); // will return the number 123
-        let picture=  $(this).data("picture"); // will return the number 123
-
-        var quntity = document.getElementById("quantity").innerHTML;
-
-        $('.buy-now-cart').text('একটু অপেক্ষা করুন .....');
-
-        if(typeof quntity ==='undefined'){
-            quntity=1;
-        } else {
-            quntity=quntity;
-        }
-        $.ajax({
-            type:"GET",
-            url:"{{url('add-to-cart')}}?product_id="+product_id+"&picture="+picture+"&quntity="+quntity,
-            success:function(data)
-            {
-                window.location.assign("{{ url('/') }}/checkout")
-                $('body .count').text(data.result.count);
-                $('body .value').text(data.result.total);
-            }
-        })
-
-    })
-
-</script>
-
-

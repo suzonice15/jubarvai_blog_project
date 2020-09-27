@@ -33,6 +33,7 @@ class AdminController extends Controller
 
     }
 
+
     public function loginCheck(Request $request)
     {
         $email = $request->email;

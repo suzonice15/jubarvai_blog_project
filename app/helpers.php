@@ -29,4 +29,13 @@ function single_product_information($product_id)
 }
 
 
+function get_single_option()
+{
+    $result = DB::table('deafult_seating')->where('default_setting_id','=',1)->first();
+    if ($result) {
+        return $result;
+    }
+}
+
+
 ?>

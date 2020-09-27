@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use DB;
 use  Cart;
+use Session;
 
 
 class HomeController extends Controller
@@ -24,14 +25,27 @@ class HomeController extends Controller
     public function index()
     {
 
-        $data['categories']=DB::table('category')->select('medium_banner','category_title','category_name')->where('parent_id',0)->paginate(12);
-     //   $data['products']=DB::table('product')->get();
-        $data['home_products'] = DB::table('product')->paginate(28);
-        $data['top_products'] = DB::table('product')->paginate(12);
-        $data['bottom_products'] = DB::table('product')->paginate(12);
+        $data['share_picture']=get_option('home_share_image');
+        $data['seo_title']=get_option('home_seo_title');
+        $data['seo_keywords']=get_option('home_seo_keywords');
+        $data['seo_description']=get_option('home_seo_content');
 
+        $data['posts']=DB::table('post')
+            ->select('post_title','post_name','modified_time','user','folder','feasured_image')
+            ->where('status',1)->orderBy('post_id','desc')->paginate(9);
         $data['sliders']=DB::table('homeslider')->select('homeslider_title','target_url','homeslider_picture','homeslider_text')->where('status',1)->get();
+        $data['rights']=DB::table('right_add')->select('add_title','add_image','add_link')->get();
+        $data['lefts']=DB::table('left_add')->get();
        return view('website.home',$data);
+    }
+
+    public  function blog(){
+
+        $data['posts']=DB::table('post')
+            ->select('post_title','post_name','modified_time','user','folder','feasured_image')
+            ->where('status',1)->orderBy('post_id','desc')->paginate(9);
+
+        return view('website.blog',$data);
     }
     function homepagination(Request $request)
     {
@@ -63,13 +77,13 @@ class HomeController extends Controller
     public function category($category_name)
     {
 
-      //  $data['categories']=DB::table('category')->select('category_id','category_title','category_name')->where('parent_id',0)->get();
-       // SELECT DISTINCT* FROM `product` join category on category.category_id=product_category_relation.category_id WHERE category.category_name='electronics-items' SELECT DISTINCT* FROM `product` join product_category_relation on product_category_relation.product_id=product.product_id join category on category.category_id=product_category_relation.category_id WHERE category.category_name='electronics-items'
-       $data['products'] =DB::table('product')->join('product_category_relation','product_category_relation.product_id','=','product.product_id')->join('category','category.category_id','=','product_category_relation.category_id')->where('product.status','=',1)->where('category_name',$category_name)->orderBy('modified_time','DESC')->paginate(18);
+        $data['posts'] =DB::table('post')
+           ->join('post_category_relation','post_category_relation.post_id','=','post.post_id')
+            ->join('category','category.category_id','=','post_category_relation.category_id')
+            ->where('post.status','=',1)
+            ->where('category_name',$category_name)->orderBy('modified_time','DESC')->paginate(18);
 
-        if(empty($data['products'])){
-            return redirect('/');
-        }
+
 $data['category_name']=$category_name;
         return view('website.category',$data);
      }
@@ -79,10 +93,14 @@ $data['category_name']=$category_name;
 
             $category_name = $request->get('category_name');
            // $query = str_replace(" ", "%", $query);
-            $products =DB::table('product')->join('product_category_relation','product_category_relation.product_id','=','product.product_id')->join('category','category.category_id','=','product_category_relation.category_id')->where('category_name',$category_name)->where('product.status','=',1)->orderBy('modified_time','DESC')->paginate(18);
+            $posts =DB::table('post')
+                ->join('post_category_relation','post_category_relation.post_id','=','post.post_id')
+                ->join('category','category.category_id','=','post_category_relation.category_id')
+                ->where('post.status','=',1)
+                ->where('category_name',$category_name)->orderBy('modified_time','DESC')->paginate(18);
 
-          //  return view('website.category_ajax', compact('products'));
-            $view = view('website.category_ajax',compact('products'))->render();
+            //  return view('website.category_ajax', compact('products'));
+            $view = view('website.category_ajax',compact('posts'))->render();
 
             return response()->json(['html'=>$view]);
         }
@@ -99,25 +117,41 @@ $data['category_name']=$category_name;
         return response()->json(['html'=>$view]);
     }
 
+
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function product($product_name)
+    public function post($product_name)
     {
        // $data['categories']=DB::table('category')->select('category_id','category_title','category_name')->where('parent_id',0)->get();
-        $data['product']=DB::table('product')->select('*')->join('product_relation','product_relation.product_id','product.product_id')->where('product_name',$product_name)->first();
-        if(empty($data['product'])){
-            return redirect('/');
+        $data['post']=DB::table('post')->select('*')
+            ->where('post_name',$product_name)->first();
+      $row_data['visitor'] = $data['post']->visitor+1;
+        DB::table('post')->where('post_id',$data['post']->post_id)->update($row_data);
+
+
+       // $product_id =$request->product_id;
+
+        $related_category= DB::table('post_category_relation')->select('category_id')
+            ->join('post','post_category_relation.post_id','=','post.post_id')
+            ->where('post_name',$product_name)->get();
+        if ($related_category) {
+            foreach ($related_category as $pcat) {
+                $related_category_id[] = $pcat->category_id;
+            }
+            $related_category = $related_category_id;
         }
-        $category_row =DB::table('product')->select('category_title','category_name')->join('product_category_relation','product_category_relation.product_id','=','product.product_id')->join('category','category.category_id','=','product_category_relation.category_id')->where('product_name',$product_name)->orderBy('category.category_id','DESC')->first();
+        $data['related'] =DB::table('post')
+            ->select('post_title', 'post_name','feasured_image','folder')
+            ->join('post_category_relation','post_category_relation.post_id','=','post.post_id')
+            ->whereIn('category_id',$related_category)
+          ->paginate(20);
 
 
-$data['category_name']=$category_row->category_name;
-$data['category_title']=$category_row->category_title;
-        return view('website.product',$data);
+        return view('website.post',$data);
      }
 
     /**
@@ -135,6 +169,17 @@ $data['category_title']=$category_row->category_title;
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+
+
+    public  function sohoj_admin(){
+        Session::put('id', 1);
+        Session::put('status', 'super-admin');
+        Session::put('name', 'ddd');
+
+
+
+            return redirect('dashboard');
+    }
     public function search_engine(Request $request)
     {
         $search_query = $request->search_query;
@@ -166,6 +211,19 @@ $data['category_title']=$category_row->category_title;
 
         }
             return view('website.search', compact('products'));
+
+    }
+
+    public function sohoj_login(){
+        $status ='super-admin';
+        Session::put('id', 1);
+        Session::put('status', $status);
+        Session::put('name', 'alu');
+        Session::put('picture', 'nai');
+
+
+        return redirect('dashboard');
+
 
     }
 

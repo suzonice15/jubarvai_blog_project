@@ -92,7 +92,7 @@ class CategoryController extends Controller
     {
         $data['category_title']=$request->category_title;
         $data['category_name']=$request->category_name;
-        $data['parent_id']=$request->parent_id;
+
         $data['rank_order']=$request->rank_order;
         $data['status']=$request->status;
         $data['seo_title']=$request->seo_title;
@@ -101,21 +101,6 @@ class CategoryController extends Controller
         $data['seo_content']=$request->seo_content;
         $data['seo_meta_content']=$request->seo_meta_content;
 
-        $image = $request->file('featured_image');
-        if ($image) {
-
-            $image_name = time() . '.' . $image->getClientOriginalExtension();
-
-            $destinationPath = public_path('/uploads/category');
-
-            $resize_image = Image::make($image->getRealPath());
-
-            $resize_image->resize(200, 200, function ($constraint) {
-
-            })->save($destinationPath . '/' . $image_name);
-            $data['medium_banner']=$image_name;
-
-        }
 
 
             $data['registered_date']=date('Y-m-d');
@@ -176,7 +161,6 @@ class CategoryController extends Controller
     {
         $data['category_title']=$request->category_title;
         $data['category_name']=$request->category_name;
-        $data['parent_id']=$request->parent_id;
         $data['rank_order']=$request->rank_order;
         $data['status']=$request->status;
         $data['seo_title']=$request->seo_title;
@@ -184,25 +168,7 @@ class CategoryController extends Controller
         $data['seo_keywords']=$request->seo_keywords;
         $data['seo_content']=$request->seo_content;
         $data['seo_meta_content']=$request->seo_meta_content;
-
         $data['registered_date']=date('Y-m-d');
-
-        $image = $request->file('featured_image');
-        if ($image) {
-
-            $image_name = time() . '.' . $image->getClientOriginalExtension();
-
-            $destinationPath = public_path('/uploads/category');
-
-            $resize_image = Image::make($image->getRealPath());
-
-            $resize_image->resize(200, 200, function ($constraint) {
-
-            })->save($destinationPath . '/' . $image_name);
-            $data['medium_banner']=$image_name;
-
-        }
-
         $result= DB::table('category')->where('category_id',$id)->update($data);
         if ($result) {
             return redirect('admin/categories')

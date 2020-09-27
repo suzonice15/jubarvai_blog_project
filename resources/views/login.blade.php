@@ -32,7 +32,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
     <div class="login-logo">
-        <?=get_option('site_title')?>
+      Admin Panel
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">

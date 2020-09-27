@@ -2,21 +2,9 @@
     <?php $i=0;?>
     @foreach ($categories as $category)
 
-        <?php
-            if(empty($category->medium_banner)){
-                $image='https://www.dhakabaazar.com/uploads/nova-black-berry-moving-room-fan-heater-35643564-min_thumb.png';
-            } else {
-                $image=url('public/uploads/category').'/'.$category->medium_banner;
-            }
-           $total_prodcut= DB::table('product_category_relation')->where('category_id',$category->category_id)->count();
-
-        ?>
 
         <tr>
             <td>{{ $category->category_id }}</td>
-            <td>
-            <img width="50" src="{{$image}}" >
-            </td>
 
 
             <td>{{$category->category_title}} </td>
@@ -24,14 +12,8 @@
 
             </td>
             <td>{{$category->category_name}} </td>
-            <td>
 
-            <?php if($category->parent_id==0){ ?>
 
-                <span class="label label-success">Main Parent</span>
-                <?php } ?>
-            </td>
-            <td>{{$total_prodcut}} </td>
             <td><?php if($category->status==1) {echo "Publised" ;}else{ echo "Unpublished";} ?> </td>
             <td>{{date('d-m-Y',strtotime($category->registered_date))}}</td>
             <td>

@@ -9,21 +9,7 @@
         }
     </style>
     <div class="box-body">
-        @if (count($errors) > 0)
-            <div class=" alert alert-danger alert-dismissible">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                <h4><i class="icon fa fa-ban"></i> Alert!</h4>
-                <ul>
 
-                    @foreach ($errors->all() as $error)
-
-                        <li style="list-style: none">{{ $error }}</li>
-
-                    @endforeach
-
-                </ul>
-            </div>
-        @endif
 
         <div class="col-sm-offset-0 col-md-12">
             <form  name="category" action="{{ url('admin/category/update') }}/{{ $category->category_id }}" class="form-horizontal"
@@ -39,7 +25,7 @@
                     <!-- /.box-header -->
                     <div class="box-body">
                         <div class="row">
-                            <div class="col-md-5 col-sm-12" style="margin-left: 10px">
+                            <div class="col-md-12 col-sm-12" style="margin-left: 10px">
                                 <div class="form-group">
                                     <label for="category_title">Category Name<span class="required">*</span></label>
                                     <input required="" type="text" id="category_title" class="form-control the_title"
@@ -62,43 +48,15 @@
                                         <option value="0">Unpublished</option>
                                     </select>
                                 </div>
-                                <!-- /.form-group -->
-                            </div>
-                            <!-- /.col -->
-                            <div class="col-md-6 col-sm-12" style="margin-left: 20px">
-                                <div class="form-group">
-                                    <label for="parent_id">Select Parent</label>
-                                    <select class="form-control select2 " name="parent_id"
-                                            tabindex="-1"
-                                            aria-hidden="true">
-                                        <option value="0" style="background-color: red;">--- choose ---</option>
 
-                                        @foreach($categories as $cat)
-
-                                            <option value="{{$cat->category_id}}">{{$cat->category_title}}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
                                 <div class="form-group ">
                                     <label for="rank_order">Rank Order</label>
                                     <input type="text" class="form-control" name="rank_order"
                                            value="{{$category->rank_order}}">
                                 </div>
-                                <div class="form-group">
-                                    <label>Category  Image<span class="required"> (200*200)</span></label>
-                                    <input style="width:306px" type="file" class="form-control" name="featured_image"/>
-<?php
-
-                                    $image=url('public/uploads/category').'/'.$category->medium_banner;
-                                    ?>
-                                    <img  style="
-    position: absolute;
-    right: 0px;
-    top: 160px;
-" width="50" src="{{$image}}">
-                                </div>
-
+                                <!-- /.form-group -->
                             </div>
+
                             <!-- /.col -->
                         </div>
                         <!-- /.row -->
@@ -163,7 +121,6 @@
     <script>
 
         document.forms['category'].elements['status'].value = "{{ $category->status }}";
-        document.forms['category'].elements['parent_id'].value = "{{ $category->parent_id }}";
 
 
     </script>
