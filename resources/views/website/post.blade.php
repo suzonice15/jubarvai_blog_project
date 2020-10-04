@@ -5,13 +5,10 @@
 
 
     <section class="ptb-30">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
 
                 <div class="col-md-12 col-lg-8">
-
-
-
                     <div class="p-30 mb-30 card-view">
                         <img src="images/slider-8-1200x600.jpg" alt="">
                         <h3 class="mt-30 mb-5"><b>{{$post->post_title}}</b></h3>
@@ -22,11 +19,10 @@
                             <li><i class="mr-5 font-12 ion-eye"></i>{{$post->visitor}}</li>
                         </ul>
 
-                        <div class="col-md-8 col-md-8 col-xs-12">
+                        
 
-                            <img   class="img-responsive" src="{{ url('/public/uploads') }}/{{ $post->folder }}/{{ $post->feasured_image }}">
+                            <img  style="height:400px; width:800px;" class="img-responsive" src="{{ url('/public/uploads') }}/{{ $post->folder }}/{{ $post->feasured_image }}">
 
-                        </div>
                         <br>
                         <br>
 
@@ -65,11 +61,11 @@
 
                                 ?>
                                 <div class="col-xs-12 col-md-4" style="float:left">
-                                    <a href="{{url('/')}}/post/{{$rel->post_name}}">
+                                    <a href="{{url('/')}}/{{$rel->post_name}}">
 
                             <img src="{{ url('/public/uploads') }}/{{ $rel->folder }}/{{ $rel->feasured_image }}">
                                     </a>
-                                     <a  style="width: 193px;background-color: #ddd;padding: 9px;height: 50px;overflow: hidden;" href="{{url('/')}}/post/{{$rel->post_name}}">{{$rel->post_title}}</a>
+                                     <a  style="width: 193px;background-color: #ddd;padding: 9px;height: 50px;overflow: hidden;" href="{{url('/')}}/{{$rel->post_name}}">{{$rel->post_title}}</a>
 
 
                                 </div>
@@ -105,7 +101,7 @@
 
         $("body").floatingSocialShare({
             buttons: [
-                "facebook", "linkedin", "pinterest",
+                "facebook", "telegram", "linkedin",
                 "twitter", "whatsapp"
             ],
             text: "share with:",

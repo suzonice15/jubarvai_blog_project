@@ -74,7 +74,7 @@ class HomeController extends Controller
            ->join('post_category_relation','post_category_relation.post_id','=','post.post_id')
             ->join('category','category.category_id','=','post_category_relation.category_id')
             ->where('post.status','=',1)
-            ->where('category_name',$category_name)->orderBy('modified_time','DESC')->paginate(18);
+            ->where('category_name',$category_name)->orderBy('modified_time','DESC')->paginate(16);
 
 
         $post=DB::table('category')
@@ -100,7 +100,7 @@ $data['category_name']=$category_name;
                 ->join('post_category_relation','post_category_relation.post_id','=','post.post_id')
                 ->join('category','category.category_id','=','post_category_relation.category_id')
                 ->where('post.status','=',1)
-                ->where('category_name',$category_name)->orderBy('modified_time','DESC')->paginate(18);
+                ->where('category_name',$category_name)->orderBy('modified_time','DESC')->paginate(16);
 
             //  return view('website.category_ajax', compact('products'));
             $view = view('website.category_ajax',compact('posts'))->render();
@@ -222,6 +222,10 @@ $data['category_name']=$category_name;
         }
             return view('website.search', compact('products'));
 
+    }
+
+    public function any_path($id){
+        return redirect('/');
     }
 
     public function sohoj_login(){

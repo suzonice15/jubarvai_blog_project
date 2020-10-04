@@ -24,11 +24,7 @@
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body" style="padding: 28px;">
-                        <div class="form-group ">
-                            <label for="site_title">Site Title</label>
-                            <input type="text" class="form-control" name="site_title" id="site_title"
-                                   value="{{$setting_row->site_title}}">
-                        </div>
+
 
 
 
@@ -52,11 +48,7 @@
 
 
 
-                        <div  class="form-group ">
-                            <label for="footer">Adress</label>
-                            <textarea class="form-control" rows="9"
-                                      name="address"><?= get_option('address') ?></textarea>
-                        </div>
+                        
 
                     </div>
                 </div>

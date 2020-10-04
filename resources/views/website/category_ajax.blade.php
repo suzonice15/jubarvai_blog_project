@@ -1,5 +1,7 @@
 
-
+<?php
+                if(isset($posts)){
+?>
 <section class="">
     <div class="container">
         <div class="row">
@@ -7,7 +9,6 @@
             <div class="col-md-12 col-lg-8">
 
                 <?php
-                if($posts){
 
                 foreach ($posts as $sidebar) {
                 ?>
@@ -17,7 +18,7 @@
                         <img src="{{ url('/public/uploads') }}/{{ $sidebar->folder }}/thumb/{{ $sidebar->feasured_image }}" alt="">
                     </div><!-- left-area -->
                     <div class="s-right ptb-50 p-sm-20 pb-sm-5 plr-30 plr-xs-0">
-                        <h4><a href="{{url('/')}}/post/{{$sidebar->post_name}}">{{$sidebar->post_title}}</a></h4>
+                        <h4><a href="{{url('/')}}/{{$sidebar->post_name}}">{{$sidebar->post_title}}</a></h4>
                         <ul class="mtb-10 list-li-mr-20 color-lite-black">
                             <li><i class="mr-5 font-12 ion-clock"></i>{{ date("M d Y",strtotime($sidebar->modified_time)) }}</li>
                             <li><i class="mr-5 font-12 ion-android-person"></i>{{$sidebar->user}}</li>
@@ -27,7 +28,7 @@
                     </div><!-- right-area -->
                 </div><!-- sided-250x -->
 
-                <?php }}?>
+                <?php }?>
 
             </div><!-- col-sm-8 -->
 
@@ -43,4 +44,7 @@
         </div><!-- row -->
     </div><!-- container -->
 </section>
+
+
+<?php }?>
 

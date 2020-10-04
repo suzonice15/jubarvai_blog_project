@@ -34,14 +34,8 @@
         var page = 1;
         //jQuery('.ajax-load').show();
         jQuery(window).scroll(function() {
-
-
             page++;
-
             loadMoreData(page);
-
-
-
         });
 
 
@@ -50,9 +44,7 @@
             jQuery.ajax(
 
                 {
-
                     url:"<?php echo e(url('/ajax_category')); ?>?page="+page+"&category_name="+category_name,
-
                     type: "get",
 
                     beforeSend: function()
@@ -68,12 +60,12 @@
                 .done(function(data)
 
                 {
-                    // console.log(data.html)
-                    if(data.html == " "){
+                     console.log(data.html)
+                    if(data.html =="  "){
 
                         jQuery('.ajax-load').html("No more records found");
 
-                        return;
+                        return true;
 
                     }
 

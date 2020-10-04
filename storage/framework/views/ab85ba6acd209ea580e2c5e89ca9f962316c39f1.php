@@ -4,13 +4,10 @@
 
 
     <section class="ptb-30">
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
 
                 <div class="col-md-12 col-lg-8">
-
-
-
                     <div class="p-30 mb-30 card-view">
                         <img src="images/slider-8-1200x600.jpg" alt="">
                         <h3 class="mt-30 mb-5"><b><?php echo e($post->post_title); ?></b></h3>
@@ -21,11 +18,10 @@
                             <li><i class="mr-5 font-12 ion-eye"></i><?php echo e($post->visitor); ?></li>
                         </ul>
 
-                        <div class="col-md-8 col-md-8 col-xs-12">
+                        
 
-                            <img   class="img-responsive" src="<?php echo e(url('/public/uploads')); ?>/<?php echo e($post->folder); ?>/<?php echo e($post->feasured_image); ?>">
+                            <img  style="height:400px; width:800px;" class="img-responsive" src="<?php echo e(url('/public/uploads')); ?>/<?php echo e($post->folder); ?>/<?php echo e($post->feasured_image); ?>">
 
-                        </div>
                         <br>
                         <br>
 
@@ -64,11 +60,11 @@
 
                                 ?>
                                 <div class="col-xs-12 col-md-4" style="float:left">
-                                    <a href="<?php echo e(url('/')); ?>/post/<?php echo e($rel->post_name); ?>">
+                                    <a href="<?php echo e(url('/')); ?>/<?php echo e($rel->post_name); ?>">
 
                             <img src="<?php echo e(url('/public/uploads')); ?>/<?php echo e($rel->folder); ?>/<?php echo e($rel->feasured_image); ?>">
                                     </a>
-                                     <a  style="width: 193px;background-color: #ddd;padding: 9px;height: 50px;overflow: hidden;" href="<?php echo e(url('/')); ?>/post/<?php echo e($rel->post_name); ?>"><?php echo e($rel->post_title); ?></a>
+                                     <a  style="width: 193px;background-color: #ddd;padding: 9px;height: 50px;overflow: hidden;" href="<?php echo e(url('/')); ?>/<?php echo e($rel->post_name); ?>"><?php echo e($rel->post_title); ?></a>
 
 
                                 </div>
@@ -104,7 +100,7 @@
 
         $("body").floatingSocialShare({
             buttons: [
-                "facebook", "linkedin", "pinterest",
+                "facebook", "telegram", "linkedin",
                 "twitter", "whatsapp"
             ],
             text: "share with:",

@@ -67,10 +67,10 @@
         <div class="container-fluid">
             <div class="row">
 
-                <div class="col-md-12 col-lg-8 col-sm-6 col-xs-12">
-                    <center><h1 style="font-size:4vw;">TopBettingSite24.com</h1></center>
-                    
-                    <center><h1 style="font-size:3vw;">Alternative Links for Bookmakers</h1></center>
+                <div class="col-md-8 col-lg-8 col-sm-6 col-xs-12">
+                    <center><h1 style="font-size:3vw; font-size: 25px;">TopBettingSite24.com</h1></center>
+                    <hr/>
+                    <center><h1 style="font-size:3vw; font-size: 30px;">Alternative Links for Bookmakers</h1></center>
 
 
                     <center><a
@@ -92,7 +92,8 @@
                                 style="width: 100%;height: auto;"></a></center>
 
 
-                    <h1 class="elementor-heading-title elementor-size-medium">Comparison Table of Top Betting Sites</h1>
+                    <center><h1 style="font-size:3vw; font-size: 30px;">Comparison Table of Top Betting Sites</h1></center>
+                    <hr/>
 
                     <!-- add  section -->
 
@@ -191,33 +192,44 @@
                         .mobile_left_add{display: none}
 
                         @media screen and (max-width: 576px) {
-                            .mobile_left_add{display: block}
+                            .mobile_left_add{display: block; padding: 0px;}
                             .desktop_left_add{display: none}
+
+                            .right_add_image {
+                                width: 50%;
+                                float: left;
+                                padding-left: 0px;
+                                padding-right: 1px;
+
+                            }
 
                         }
 
                     </style>
                     <br>
                     <br>
-                    <div class="row">
 
-                        <div class="col-md-9 mobile_left_add">
+
+                        <div class="col-md-9 col-lg-9 col-sm-12 col-xs-12 mobile_left_add">
                             @if($lefts)
                                 @foreach($lefts as $left)
                             <div class="col-xs-12">
                                 <img
                                     src="{{URL::to('/public')}}/uploads/sliders/{{$left->add_image}}"
-                                    width="400"
-                                    height="130">
+                                    >
                             </div>
-                            <div class="col-xs-12">
+                           
+
+                            
+                            <div class="col-xs-12"><br/>
                                 <?php echo $left->add_title; ?>
                             </div>
+                            
                             <div class="col-xs-12" style="text-align: center;">
 
                                 <div  data-tip="Copy to clipboard">
                                     <span style="color:black;text-align: center"><b>Promo Code</b></span>
-                                    <input  style="margin-top: 15px;margin-bottom: 5px;" id="{{$left->left_add_id}}" onclick="mobile_copyToClipboard('{{$left->left_add_id}}')" type="text" value="{{$left->promo_link}}">
+                                    <input  style="margin-top: 15px;margin-bottom: 15px;" id="{{$left->left_add_id}}" onclick="mobile_copyToClipboard('{{$left->left_add_id}}')" type="text" value="{{$left->promo_link}}">
                                 </div>
                                 <p    style="display:none;color: green;text-align: center;font-weight: bold"
                                       id="mobile_success_{{$left->left_add_id}}">Copied the text</p>
@@ -245,8 +257,7 @@
                         </div>
                         
 
-                        <div class="col-md-9 desktop_left_add">
-
+                        <div class="col-md-9  col-lg-9 col-sm-12 col-xs-12 desktop_left_add">
 
                             <table class="table table-bordered table-striped table-responsive">
 
@@ -254,14 +265,14 @@
                                 @if($lefts)
                                     @foreach($lefts as $left)
                                         <tr>
-                                            <td>
+                                            <td width="30%">
                                                 <img
                                                     src="{{URL::to('/public')}}/uploads/sliders/{{$left->add_image}}"
                                                     width="300"
                                                     height="100">
                                             </td>
-                                            <td><?php echo $left->add_title; ?></td>
-                                            <td style="text-align: center;">
+                                            <td  width="50%"><?php echo $left->add_title; ?></td>
+                                            <td  width="20%" style="text-align: center;">
                                                 <span style="color:red;text-align: center">Promo Code</span>
                                                 <div  data-tip="Copy to clipboard">
                                                     <input  style="margin-top: 15px;width: 100%;margin-bottom: 5px;" id="{{$left->left_add_id}}" onclick="copyToClipboard('{{$left->left_add_id}}')" type="text" value="{{$left->promo_link}}">
@@ -295,34 +306,30 @@
                             </table>
                         </div>
 
-                        <div class="col-md-3">
-                            <table>
+                        <div class="col-md-3  col-lg-3 col-sm-12 col-xs-12">
 
-
-                                <tbody>
 
                                 @if($rights)
                                     @foreach($rights as $right)
-                                        <tr>
-                                            <td>
-                                                <a href="{{$right->add_link}}">
+                                    <div class="right_add_image">
+
+
+                                    <a href="{{$right->add_link}}">
                                                     <img
                                                         src="{{URL::to('/public')}}/uploads/sliders/{{$right->add_image}}"
                                                         alt="topbettingsite24">
 
                                                 </a>
-                                            </td>
-                                        </tr>
+                                    </div>
+
 
                                     @endforeach
                                 @endif
-                                </tbody>
-                            </table>
 
 
                         </div>
 
-                    </div>
+
                     
                     
 <br/>
@@ -334,35 +341,51 @@
 
 <br/>
 
+
+                        <center><h1 style="font-size:3vw; font-size: 39px;">TopBetting Site News 24</h1></center>
+<br/>
+<hr/>
+
                     <style>
 
                         .home_page_title{
 
-                            width: 208px;
+                            width:193px;
                             background-color: #ddd;
                             padding: 9px;
                             height: 50px;
                             overflow: hidden;
                             display: block;
+                
                             margin-top: -6px;
                             margin-bottom: 5px;
                         }
-                        @media (width: 576px) {
+                        .home_page_post{
+                            float:left;padding: 5px;
+                            width: 25%;
+                        }
+                        @media (max-width:600px) {
                             .home_page_title{
 
-                                width: 208px;
+                                width: 169px;
                                 background-color: #ddd;
                                 padding: 9px;
                                 height: 50px;
                                 overflow: hidden;
                                 display: block;
+                                
                                 margin-top: -6px;
                                 margin-bottom: 5px;
+                            }
+                            .home_page_post{
+                                float:left;padding: 5px;
+                                width: 50%;
                             }
                         }
 
 
                     </style>
+
 
                      <?php
                     if($posts){
@@ -370,15 +393,15 @@
                     foreach ($posts as $sidebar) {
                     ?>
 
-                    <div class="col-sm-12 col-xs-12 col-md-4" style="float:left">
-                        <a href="{{url('/')}}/post/{{$sidebar->post_name}}">
+                    <div class="home_page_post" >
+                        <a href="{{url('/')}}/{{$sidebar->post_name}}">
                             <img class="img-responsive"
                                  style="background-color: #ddd;
 padding: 4px;width:118%
 " src="{{ url('/public/uploads') }}/{{ $sidebar->folder }}/thumb/{{ $sidebar->feasured_image }}" alt="">
                         </a>
 
-                            <a class="home_page_title"  href="{{url('/')}}/post/{{$sidebar->post_name}}">{{$sidebar->post_title}}</a>
+                            <a class="home_page_title"  href="{{url('/')}}/{{$sidebar->post_name}}">{{$sidebar->post_title}}</a>
 
                     </div>
 
@@ -388,6 +411,8 @@ padding: 4px;width:118%
                     }
 
                     ?>
+
+
 
                     <br/>
 
@@ -403,11 +428,11 @@ padding: 4px;width:118%
 
 
                 </div>
-                
+
 
                 <!-- col-sm-8 -->
 
-                <div class="col-md-12 col-lg-4">
+                <div class="col-md-4 col-lg-4">
 
 
                     @include('website.includes.sidebar')
@@ -508,4 +533,30 @@ padding: 4px;width:118%
         }
 
     </script>
+    
+    
+    
+    
+    <script type="text/javascript"
+            src="https://www.sohojbuy.com/assets/font_end/dist/jquery.floating-social-share.min.js"></script>
+    <link rel="stylesheet" type="text/css"
+          href="https://www.sohojbuy.com/assets/font_end/dist/jquery.floating-social-share.min.css"/>
+
+    <script>
+        var url = window.location.href;
+
+        $("body").floatingSocialShare({
+            buttons: [
+                "facebook", "telegram", "linkedin",
+                "twitter", "whatsapp"
+            ],
+            text: "share with:",
+            url: document.URL,
+
+        });
+
+    </script>
+    
+    
+    
 @endsection

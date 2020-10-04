@@ -20,7 +20,11 @@
                     <h3 class="box-title">Website Home Page   Information</h3>
                 </div>
                 <div class="box-body" style="padding: 22px;">
-
+                    <div class="form-group ">
+                        <label for="site_title">Site Title</label>
+                        <input type="text" class="form-control" name="site_title" id="site_title"
+                               value="<?=get_option('site_title')?>">
+                    </div>
 
                             <div class="form-group">
                                 <label for="home_seo_title">Home Page SeoTitle</label>

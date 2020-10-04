@@ -23,6 +23,8 @@ if (isset($page_title)) {
             echo $title;
         }?></title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <body class="<?php echo app()->getLocale();; ?>">
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
     <meta property="og:image" content="https://sportal.betxchange.com/wp-content/uploads/2017/01/sports-betting1.jpg" />
@@ -148,8 +150,8 @@ if (isset($page_title)) {
                     
                     
                     
-                    <li class="click_single_menu"><a href="<?php echo e(url('/')); ?>/blog">Home</a> </li>
-                    <li class=" click_single_menu"><a href="<?php echo e(url('/')); ?>/blog">Blog</a> </li>
+                    <li class="click_single_menu"><a href="<?php echo e(url('/')); ?>">Home</a> </li>
+                    <li class=" click_single_menu"><a href="<?php echo e(url('/')); ?>/blogs">Blog</a> </li>
 
 
 
@@ -157,8 +159,17 @@ if (isset($page_title)) {
 
                     <li class="drop-down"><a href="#!">Top Betting Sites<i class="ion-chevron-down"></i></a>
                 <ul class="drop-down-menu drop-down-inner">
-                <li><a href="#">1xbet</a></li>
-                <li><a href="#">Bet365 </a></li>
+                
+                <li><a href="https://www.topbettingsite24.com/post/22bet-sportsbook-review-2020">22Bet</a></li>
+                <li><a href="https://www.topbettingsite24.com/post/1xbet-bangladesh-online-sports-betting">1xBet </a></li>
+                 
+                 <li><a href="https://www.topbettingsite24.com/post/betfair-global-sports-betting-sportsbook">Betfair  </a></li>
+                 
+                <li><a href="https://www.topbettingsite24.com/post/melbet-sports-online-sports-betting-company">Melbet</a></li>
+                <li><a href="https://topbettingsite24.com/post/mostbet-online-sports-betting-sportsbook">MostBet</a></li>
+                <li><a href="https://topbettingsite24.com/post/spin-sports--bookmaker-rating--player-reviews">Spin Sports</a></li>
+                
+                
                 </ul>
                 </li>
         

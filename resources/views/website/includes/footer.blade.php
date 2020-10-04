@@ -8,36 +8,9 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-4 col-md-4 col-sm-4">
-                <h5 class="f-title"><b>Begambleaware </b></h5>
-                <address>
-                    TopBettingSite24.com Copyright © 2019 - 2020.
-Topbettingsite24.com does not offer betting services. Data and information are provided for informational and entertainment purposes only, and are not intended for investment or other purposes. Playing real money carries high level of financial risk and may cause you financial problems. If you have gambling addiction problems we recommend you to visit www.gamcare.org.uk Or www.begambleaware.co.uk and ask for help.
-Gamble responsibly 18+
-                </address>
-            </div><!-- col-sm-2 -->
-
-
-            <div class="col-lg-4 col-md-4 col-sm-4">
-                <h5 class="f-title"><b>Recent Category</b></h5>
-                <ul class="mb-30 list-hover list-block list-a-ptb-5">
-                    <?php
-                    $categorys=DB::table('category')
-                        ->select('category_title','category_name')
-                        ->where('status',1)->orderBy('category_id','desc')->paginate(6);
-                    ?>
-                    <?php
-                    if($categorys){
-
-                    foreach ($categorys as $category) {
-                    ?>
-                    <li><a href="{{url('/')}}/category/{{$category->category_title}}">{{$category->category_title}}</a></li>
-
-
-                    <?php }} ?>               </ul>
-            </div><!-- col-sm-2 -->
-
-            <div class="col-lg-4 col-md-8 col-sm-8">
-                <div class="pr-10 pr-sm-0">
+                
+                
+               <div class="pr-10 pr-sm-0">
                     <h5 class="f-title"><b>RECENT POST</b></h5>
                     <?php
                     $sidebars=DB::table('post')
@@ -67,7 +40,61 @@ Gamble responsibly 18+
                     }?>
 
 
-                </div><!--pr-10 -->
+                </div>
+                
+               
+               
+                
+            
+            </div><!-- col-sm-2 -->
+
+
+            <div class="col-lg-4 col-md-4 col-sm-4">
+                
+                
+                <h5 class="f-title"><b>Recent Category</b></h5>
+                <ul class="mb-30 list-hover list-block list-a-ptb-5">
+                    <?php
+                    $categorys=DB::table('category')
+                        ->select('category_title','category_name')
+                        ->where('status',1)->orderBy('category_id','desc')->paginate(6);
+                    ?>
+                    <?php
+                    if($categorys){
+
+                    foreach ($categorys as $category) {
+                    ?>
+                    <li><a href="{{url('/')}}/category/{{$category->category_title}}">{{$category->category_title}}</a></li>
+
+
+                    <?php }} ?>               </ul>
+            </div>
+            
+            
+            
+            <!-- col-sm-2 -->
+            
+            
+            
+
+            <div class="col-lg-4 col-md-8 col-sm-8">
+                
+                
+                 <h5 class="f-title"><b>Begambleaware </b></h5>
+                <address><h5> TopBettingSite24.com Copyright © 2019 - 2020.
+Topbettingsite24.com does not offer betting services. Data and information are provided for informational and entertainment purposes only, and are not intended for investment or other purposes. Playing real money carries high level of financial risk and may cause you financial problems. If you have gambling addiction problems we recommend you to visit <a href="https://www.gamcare.org.uk/" target="_blank">www.gamcare.org.uk</a> Or <a href="https://www.begambleaware.org/" target="_blank">www.begambleaware.co.uk</a> and ask for help.</h5>
+                   <h3 style="color:red">Gamble responsibly 18+</h3>
+
+                </address>
+                
+                
+                
+                
+                
+                
+                
+                
+                <!--pr-10 -->
             </div><!-- col-sm-4 -->
 
         </div><!-- row -->
@@ -83,17 +110,16 @@ Gamble responsibly 18+
 
                 <div class="col-sm-12 col-md-12">
                     <p class="text-md-center font-9 pt-5 mtb-5"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        Copyright &copy;<script>document.write(new Date().getFullYear());</script>
-                       devoloped by shahinul islam sujon
+                        Copyright 2019 -<script>document.write(new Date().getFullYear());</script> 
+                       devoloped by <a href="https://topbettingsite24.com/">Top betting site 24</a>
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
                 </div><!-- col-sm-3 -->
-
+<br/><br/><br/><br/><hr/>
             </div><!-- row -->
 
         </div><!-- container -->
     </div><!-- container -->
 </footer>
-
 <!-- SCIPTS -->
 
 

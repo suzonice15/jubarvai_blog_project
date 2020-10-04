@@ -20,7 +20,7 @@ $sidebars=DB::table('post')
         </div><!-- s-left -->
 
         <div class="s-right">
-            <h5><a href="{{url('/')}}/post/{{$sidebar->post_name}}">
+            <h5><a href="{{url('/')}}/{{$sidebar->post_name}}">
                     <b>{{$sidebar->post_title}}</b></a></h5>
             <ul class="mtb-5 list-li-mr-20 color-lite-black">
                 <li><i class="mr-5 font-12 ion-clock"></i>{{ date("M d Y",strtotime($sidebar->modified_time)) }}</li>
@@ -101,5 +101,15 @@ $sidebars=DB::table('post')
 <!-- Facebook Page -->
 
 
+<!-- Live Score -->
+
+<center><a
+                            href="#"><img
+                                src="https://www.topbettingsite24.com/public/ads/banner_300x600.gif"
+                                style="width: 100%;height: auto;"></a></center>
+
+<br/>
 
 
+
+<!-- Live Score -->

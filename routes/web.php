@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'HomeController@index');
 Route::get('/category/{id}', 'HomeController@category');
 Route::get('ajax_category', 'HomeController@ajax_category');
-Route::get('/post/{id}', 'HomeController@post');
+//Route::get('/post/{id}', 'HomeController@post');
 Route::get('/search_engine', 'HomeController@search_engine');
 Route::get('/search', 'HomeController@search');
 Route::get('/blog', 'HomeController@blog');
@@ -126,6 +126,7 @@ Route::post('customer/login', 'CustomerController@login_check');
 /****=============== vendor admin section    =====================  ******/
 
 
+Route::get('/{any}', 'HomeController@post');
 
 Route::get('/clear-cache', function() {
     Artisan::call('cache:clear');
