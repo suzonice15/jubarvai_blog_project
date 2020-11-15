@@ -104,7 +104,7 @@ $sidebars=DB::table('post')
 <!-- Live Score -->
 
 <center><a
-                            href="#"><img
+                            href="http://refpasjque.top/L?tag=d_368809m_2897c_&site=368809&ad=2897"><img
                                 src="https://www.topbettingsite24.com/public/ads/banner_300x600.gif"
                                 style="width: 100%;height: auto;"></a></center>
 

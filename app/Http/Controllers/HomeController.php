@@ -32,11 +32,25 @@ class HomeController extends Controller
 
         $data['posts']=DB::table('post')
             ->select('post_title','post_name','modified_time','user','folder','feasured_image')
-            ->where('status',1)->orderBy('post_id','desc')->paginate(9);
+            ->where('status',1)->orderBy('post_id','desc')->paginate(12);
         $data['sliders']=DB::table('homeslider')->select('homeslider_title','target_url','homeslider_picture','homeslider_text')->where('status',1)->get();
         $data['rights']=DB::table('right_add')->select('add_title','add_image','add_link')->get();
         $data['lefts']=DB::table('left_add')->get();
        return view('website.home',$data);
+    }
+
+
+    public function home_pagination(Request $request)
+    {
+        if ($request->ajax()) {
+
+            $query = $request->get('query');
+            $data['posts']=DB::table('post')
+                ->select('post_title','post_name','modified_time','user','folder','feasured_image')
+                ->where('status',1)->orderBy('post_id','desc')->paginate(12);
+            return view('website.home_page_pagination', $data);
+        }
+
     }
 
     public  function blog(){
@@ -131,37 +145,53 @@ $data['category_name']=$category_name;
     {
 
         // $data['categories']=DB::table('category')->select('category_id','category_title','category_name')->where('parent_id',0)->get();
+
         $data['post']=DB::table('post')->select('*')
             ->where('post_name',$product_name)->first();
-      $row_data['visitor'] = $data['post']->visitor+1;
-        DB::table('post')->where('post_id',$data['post']->post_id)->update($row_data);
+        if($data['post']) {
+            $row_data['visitor'] = $data['post']->visitor + 1;
+            DB::table('post')->where('post_id', $data['post']->post_id)->update($row_data);
 
 
-       // $product_id =$request->product_id;
-        $data['share_picture']=get_option('home_share_image');
-        $data['seo_title']= $data['post']->seo_title;
-        $data['seo_keywords']=$data['post']->seo_keywords;
-        $data['seo_description']=$data['post']->seo_content;
-        $data['page_title']=$data['post']->post_title;
+            // $product_id =$request->product_id;
+            $data['share_picture'] = get_option('home_share_image');
+            $data['seo_title'] = $data['post']->seo_title;
+            $data['seo_keywords'] = $data['post']->seo_keywords;
+            $data['seo_description'] = $data['post']->seo_content;
+            $data['page_title'] = $data['post']->post_title;
 
 
-        $related_category= DB::table('post_category_relation')->select('category_id')
-            ->join('post','post_category_relation.post_id','=','post.post_id')
-            ->where('post_name',$product_name)->get();
-        if ($related_category) {
-            foreach ($related_category as $pcat) {
-                $related_category_id[] = $pcat->category_id;
+            $related_category = DB::table('post_category_relation')->select('category_id')
+                ->join('post', 'post_category_relation.post_id', '=', 'post.post_id')
+                ->where('post_name', $product_name)->get();
+            if ($related_category) {
+                foreach ($related_category as $pcat) {
+                    $related_category_id[] = $pcat->category_id;
+                }
+                $related_category = $related_category_id;
             }
-            $related_category = $related_category_id;
+            $data['related'] = DB::table('post')
+                ->select('post_title', 'post_name', 'feasured_image', 'folder')
+                ->join('post_category_relation', 'post_category_relation.post_id', '=', 'post.post_id')
+                ->whereIn('category_id', $related_category)
+                ->paginate(20);
+            return view('website.post', $data);
+        } else {
+
+
+            return redirect('/');
+
+
+
         }
-        $data['related'] =DB::table('post')
-            ->select('post_title', 'post_name','feasured_image','folder')
-            ->join('post_category_relation','post_category_relation.post_id','=','post.post_id')
-            ->whereIn('category_id',$related_category)
-          ->paginate(20);
+     }
 
+     public function sitemap(){
 
-        return view('website.post',$data);
+         $posts=DB::table('post')->get();
+         return response ()->view ('website.sitemap', [
+             'posts' => $posts,
+         ])->header ('Content-Type', 'text/xml');
      }
 
     /**

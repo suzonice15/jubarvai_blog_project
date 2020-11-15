@@ -28,7 +28,7 @@
                         </a><!-- s-left -->
 
                         <div class="s-right pl-10">
-                            <h5><a href="#"><b><?php echo e($sidebar->post_title); ?></b></a></h5>
+                            <h5><a href="<?php echo e(url('/')); ?>/<?php echo e($sidebar->post_name); ?>"><b><?php echo e($sidebar->post_title); ?></b></a></h5>
                             <ul class="mtb-5 list-li-mr-20 color-ash">
                                 <li><i class="mr-5 font-12 ion-clock"></i><?php echo e(date("M d Y",strtotime($sidebar->modified_time))); ?></li>
                                 <li><i class="mr-5 font-12 ion-eye"></i><?php echo e($sidebar->visitor); ?></li>
@@ -64,7 +64,7 @@
 
                     foreach ($categorys as $category) {
                     ?>
-                    <li><a href="<?php echo e(url('/')); ?>/category/<?php echo e($category->category_title); ?>"><?php echo e($category->category_title); ?></a></li>
+                    <li><a href="<?php echo e(url('/')); ?>/category/<?php echo e($category->category_name); ?>"><?php echo e($category->category_title); ?></a></li>
 
 
                     <?php }} ?>               </ul>

@@ -19,6 +19,21 @@ if (isset($page_title)) {
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
+    
+    
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-168760913-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-168760913-1');
+</script>
+    
+    
+    
     <title><?php if (isset($title)) {
             echo $title;
         }?></title>
@@ -49,6 +64,9 @@ if (isset($page_title)) {
 
 
     <link rel="canonical" href="{{url()->current()}}"/>
+    <meta name="google-site-verification" content="4BoYD4wuHpdSA8OqT8OzTAZWaVKjt_o3ebazVEMMNqw" />
+    <meta name="msvalidate.01" content="A33A836042946C70F13E4FC1DBE74F11" />
+    <html lang="en-GB" xml:lang="en-GB"></html>
     <meta property="og:locale" content="EN"/>
     <meta property="og:url" content="{{url()->current()}}"/>
     <meta property="og:type" content="<?php if (isset($seo_description)) {
@@ -150,24 +168,17 @@ if (isset($page_title)) {
                     
                     
                     
-                    <li class="click_single_menu"><a href="{{url('/')}}">Home</a> </li>
-                    <li class=" click_single_menu"><a href="{{url('/')}}/blogs">Blog</a> </li>
-
-
-
-
-
-                    <li class="drop-down"><a href="#!">Top Betting Sites<i class="ion-chevron-down"></i></a>
-                <ul class="drop-down-menu drop-down-inner">
+                <li class="click_single_menu"><a href="{{url('/')}}">Home</a> </li>
                 
-                <li><a href="https://www.topbettingsite24.com/post/22bet-sportsbook-review-2020">22Bet</a></li>
-                <li><a href="https://www.topbettingsite24.com/post/1xbet-bangladesh-online-sports-betting">1xBet </a></li>
-                 
-                 <li><a href="https://www.topbettingsite24.com/post/betfair-global-sports-betting-sportsbook">Betfair  </a></li>
-                 
-                <li><a href="https://www.topbettingsite24.com/post/melbet-sports-online-sports-betting-company">Melbet</a></li>
-                <li><a href="https://topbettingsite24.com/post/mostbet-online-sports-betting-sportsbook">MostBet</a></li>
-                <li><a href="https://topbettingsite24.com/post/spin-sports--bookmaker-rating--player-reviews">Spin Sports</a></li>
+                <li class="drop-down"><a href="#!">Top Betting Sites<i class="ion-chevron-down"></i></a>
+                
+                <ul class="drop-down-menu drop-down-inner">
+                <li><a href="https://www.topbettingsite24.com/22bet-sportsbook-review-2020">22Bet</a></li>
+                <li><a href="https://www.topbettingsite24.com/1xbet-bangladesh-online-sports-betting">1xBet </a></li>
+                <li><a href="https://www.topbettingsite24.com/betfair-global-sports-betting-sportsbook">Betfair  </a></li>
+                <li><a href="https://www.topbettingsite24.com/melbet-sports-online-sports-betting-company">Melbet</a></li>
+                <li><a href="https://topbettingsite24.com/marathonbet-top-sports-betting-odds--casino">Marathonbet</a></li>
+                <li><a href="https://topbettingsite24.com/betway-sports-online-betting-site-review-in-2020">Betway</a></li>
                 
                 
                 </ul>
@@ -178,9 +189,14 @@ if (isset($page_title)) {
         
                 <li class="drop-down"><a href="#!">Country<i class="ion-chevron-down"></i></a>
                 <ul class="drop-down-menu drop-down-inner">
-                <li><a href="#">Bangladesh</a></li>
-                <li><a href="#">India </a></li>
-                <li><a href="#">Pakistan </a></li>
+                <li><a href="https://www.topbettingsite24.com/bangladesh-sports-betting">Bangladesh</a></li>
+                <li><a href="https://www.topbettingsite24.com/india-sports-betting">India </a></li>
+                <li><a href="https://www.topbettingsite24.com/pakistan-sports-betting">Pakistan </a></li>
+                <li><a href="https://www.topbettingsite24.com/Japan-Sports-Betting">Japan</a></li>
+                <li><a href="https://www.topbettingsite24.com/Online-Sports-Betting-Site-USA">USA </a></li>
+                <li><a href="https://www.topbettingsite24.com/Hong-Kong-Sports-Betting">Hong-Kong </a></li>
+                <li><a href="https://www.topbettingsite24.com/Singapore%20Sports%20Betting">Singapore</a></li>
+                <li><a href="https://www.topbettingsite24.com/uk-sports-betting">United Kingdom (UK) </a></li>
                 </ul>
                 </li>
         
@@ -189,9 +205,16 @@ if (isset($page_title)) {
         
                 <li class="drop-down"><a href="#!">Review<i class="ion-chevron-down"></i></a>
                 <ul class="drop-down-menu drop-down-inner">
-                <li><a href="#">Bet365 Review</a></li>
-                <li><a href="#">1xbet Review </a></li>
-                <li><a href="#">22Bet Review </a></li>
+                <li><a href="https://www.topbettingsite24.com/22bet-sportsbook-review-2020">22Bet Review</a></li>
+                <li><a href="https://www.topbettingsite24.com/1xbet-bangladesh-online-sports-betting">1xBet Review </a></li>
+                 
+                 <li><a href="https://www.topbettingsite24.com/betfair-global-sports-betting-sportsbook">Betfair Review </a></li>
+                 
+                <li><a href="https://www.topbettingsite24.com/melbet-sports-online-sports-betting-company">Melbet Review</a></li>
+                <li><a href="https://topbettingsite24.com/mostbet-online-sports-betting-sportsbook">MostBet Review</a></li>
+                <li><a href="https://topbettingsite24.com/spin-sports--bookmaker-rating--player-reviews">Spin Sports Review</a></li>
+                <li><a href="https://topbettingsite24.com/marathonbet-top-sports-betting-odds--casino">Marathonbet Review</a></li>
+                <li><a href="https://topbettingsite24.com/betway-sports-online-betting-site-review-in-2020">Betway Review</a></li>
                 </ul>
                 </li>
                 
@@ -200,13 +223,13 @@ if (isset($page_title)) {
                 
                  <li class="drop-down"><a href="#!">Payment Method<i class="ion-chevron-down"></i></a>
                 <ul class="drop-down-menu drop-down-inner">
-                <li><a href="#">Neteller</a></li>
-                <li><a href="#">PayPal </a></li>
+                <li><a href="https://www.topbettingsite24.com/neteller-online-wallet">Neteller</a></li>
+                <li><a href="https://www.topbettingsite24.com/what-is-paypal">PayPal </a></li>
                 <li><a href="#">Bitcoin </a></li>
                 </ul>
                 </li>
         
-        
+        <li class=" click_single_menu"><a href="{{url('/')}}/blogs">Blog</a> </li>
         
 
             </ul>

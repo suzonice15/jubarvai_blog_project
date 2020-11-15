@@ -18,8 +18,9 @@ Route::get('ajax_category', 'HomeController@ajax_category');
 //Route::get('/post/{id}', 'HomeController@post');
 Route::get('/search_engine', 'HomeController@search_engine');
 Route::get('/search', 'HomeController@search');
-Route::get('/blog', 'HomeController@blog');
+Route::get('/blogs', 'HomeController@blog');
 Route::get('/page/{id}', 'HomeController@page');
+Route::get('/home/pagination', 'HomeController@home_pagination');
 
 
 Route::get('/admin', 'admin\AdminController@login');
@@ -125,8 +126,8 @@ Route::post('customer/login', 'CustomerController@login_check');
 
 /****=============== vendor admin section    =====================  ******/
 
-
-Route::get('/{any}', 'HomeController@post');
+Route::get('/sitemap.xml', 'HomeController@sitemap');
+ Route::get('/{any}', 'HomeController@post');
 
 Route::get('/clear-cache', function() {
     Artisan::call('cache:clear');

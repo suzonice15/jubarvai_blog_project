@@ -15,7 +15,7 @@
     <body>
 
     <div class="container-fluid">
-        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <div id="myCarousel" class="carousel slide" data-ride="carousel">
             <!-- Indicators -->
 
             <!-- Wrapper for slides -->
@@ -31,8 +31,9 @@
                         $homeslider_banner = url('public/uploads/sliders') . '/' . $slider->homeslider_picture;
 
                         $html .= '<div class="item ' . ($i == 0 ? 'active' : null) . '">
+                        <a style="width:100%" target="_blank" href="'.$slider->target_url.'">
 												<img src="' . $homeslider_banner . '" alt="Dhaka Image Slider">
-											</div>';
+											</a></div>';
 
                         $indicators .= '<li data-target="#carousel-example-generic" data-slide-to="' . $i . '" class="' . ($i == 0 ? 'active' : null) . '">&nbsp;</li>';
 
@@ -74,14 +75,19 @@
 
 
                     <center><a
-                            href="http://wlskrill.adsrv.eacdn.com/C.ashx?btag=a_87022b_3877c_&affid=82487&siteid=87022&adid=3877&c="><img
+                            href="http://refpaktyjczd.top/L?tag=d_368809m_2897c_&site=368809&ad=2897"><img
                                 src="https://www.topbettingsite24.com/public/uploads/ads/1xbet-790.png"
                                 style="width: 100%;height: auto;"></a></center>
 
                     <div class="elementor-text-editor elementor-clearfix"><h3><span style="font-size: 12pt;">What is a topbettingsite24 Site?</span>
                         </h3>
                         <p class="color-1"><span
-                                style="font-family: 'times new roman', times, serif; font-size: 12pt; color: #000000;">A top betting site 24 Site is simply a replica of the original site, which in our case is created by bookmakers to allow access to its customers in countries where the web address is obscured by local governments, because in most cases the bookmaker doesn’t possess a so-called national license to operate in that specific country. Some bookmakers create the topbettingsite24 sites to reduce web traffic and improve the availability of the original site, but in our case this is very rare situational. Of course, the topbettingsite24 site is an official site, the only difference that we notice is the web address is different from the original. Mirror sites are in degrees to provide the same safety standards as the original site, being a copy of it, so using them is not cause for concern.</span>
+                                style="font-family: 'times new roman', times, serif; font-size: 12pt; color: #000000;">
+                            A top betting site 24 Site is simply a replica of the original site, which in our case is created by bookmakers to allow access to it's 
+                            customers in countries where the web address is obscured by local governments, because in most cases the bookmaker doesn’t possess a so-called national license to operate in that specific country. 
+                            Some bookmakers create the topbettingsite24 sites to reduce web traffic and improve the availability of the original site, but in our case this is very rare situational. 
+                            Of course, the topbettingsite24 site is an official site, the only difference that we notice is the web address is different from the original. 
+                            Mirror sites are in degrees to provide the same safety standards as the original site, being a copy of it, so using them is not cause for concern.</span>
                         </p></div>
                     <br/>
 
@@ -214,9 +220,13 @@
                             @if($lefts)
                                 @foreach($lefts as $left)
                             <div class="col-xs-12">
+						 <a    href="{{$left->add_link}}"       target="_blank"
+
+                                   >
                                 <img
                                     src="{{URL::to('/public')}}/uploads/sliders/{{$left->add_image}}"
                                     >
+									</a>
                             </div>
                            
 
@@ -266,10 +276,14 @@
                                     @foreach($lefts as $left)
                                         <tr>
                                             <td width="30%">
+											 <a    href="{{$left->add_link}}"       target="_blank"
+
+                                   >
                                                 <img
                                                     src="{{URL::to('/public')}}/uploads/sliders/{{$left->add_image}}"
                                                     width="300"
                                                     height="100">
+													</a>
                                             </td>
                                             <td  width="50%"><?php echo $left->add_title; ?></td>
                                             <td  width="20%" style="text-align: center;">
@@ -387,44 +401,10 @@
                     </style>
 
 
-                     <?php
-                    if($posts){
+                    <span id="home_page_paginantoon">
+                    @include('website.home_page_pagination')
 
-                    foreach ($posts as $sidebar) {
-                    ?>
-
-                    <div class="home_page_post" >
-                        <a href="{{url('/')}}/{{$sidebar->post_name}}">
-                            <img class="img-responsive"
-                                 style="background-color: #ddd;
-padding: 4px;width:118%
-" src="{{ url('/public/uploads') }}/{{ $sidebar->folder }}/thumb/{{ $sidebar->feasured_image }}" alt="">
-                        </a>
-
-                            <a class="home_page_title"  href="{{url('/')}}/{{$sidebar->post_name}}">{{$sidebar->post_title}}</a>
-
-                    </div>
-
-
-                    <?php }
-
-                    }
-
-                    ?>
-
-
-
-                    <br/>
-
-
-
-
-                    <div class="col-sm-12 col-md-12" style="float:left">
-
-                        {!! $posts->links() !!}
-                    </div>
-
-
+</span>
 
 
                 </div>
@@ -444,6 +424,9 @@ padding: 4px;width:118%
         </div>
 
         <!-- fotter adds -->
+        
+        
+        <iframe src="https://bwidget.crictimes.org/" style="width:100%;min-height: 250px;" frameborder="0" scrolling="yes"></iframe>
 
         <center><a
                             href="http://wlskrill.adsrv.eacdn.com/C.ashx?btag=a_87022b_3877c_&affid=82487&siteid=87022&adid=3877&c="><img
@@ -456,6 +439,7 @@ padding: 4px;width:118%
 
         <!-- container -->
     </section>
+    <input type="text" name="hidden_page" id="hidden_page" value="1" />
 
 
     <script>
@@ -556,7 +540,41 @@ padding: 4px;width:118%
         });
 
     </script>
-    
-    
-    
+
+
+    <script>
+        $(document).ready(function(){
+
+            function fetch_data(page)
+            {
+                $.ajax({
+                    type:"GET",
+                    url:"{{url('home/pagination')}}?page="+page,
+                    success:function(data)
+                    {
+                        $('#home_page_paginantoon').empty();
+                        $('#home_page_paginantoon').html(data);
+
+                    }
+                })
+            }
+
+
+
+
+            $(document).on('click', '.pagination a', function(event){
+                event.preventDefault();
+                var page = $(this).attr('href').split('page=')[1];
+                $('#hidden_page').val(page);
+                var query = $('#serach').val();
+                fetch_data(page, query);
+            });
+
+        });
+    </script>
+
+
+
+
+
 @endsection

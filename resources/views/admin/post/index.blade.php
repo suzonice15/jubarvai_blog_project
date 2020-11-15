@@ -22,10 +22,8 @@
             <thead>
             <tr>
                 <th>Sl</th>
-
                  <th>Picture</th>
                  <th>Post</th>
-
                 <th>Published Status</th>
                 <th>Registration date</th>
                 <th>Action</th>

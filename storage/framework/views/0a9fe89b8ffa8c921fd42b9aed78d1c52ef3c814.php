@@ -53,10 +53,10 @@
                     ?>
 
                     <div class="home_page_post" style="float:left">
-                        <a href="<?php echo e(url('/')); ?>/post/<?php echo e($sidebar->post_name); ?>"> <img   class="img-responsive" style="background-color: #ddd;
+                        <a href="<?php echo e(url('/')); ?>/<?php echo e($sidebar->post_name); ?>"> <img   class="img-responsive" style="background-color: #ddd;
 padding: 4px;" src="<?php echo e(url('/public/uploads')); ?>/<?php echo e($sidebar->folder); ?>/thumb/<?php echo e($sidebar->feasured_image); ?>" alt="">
                         </a>
-                        <a  class="home_page_title" href="<?php echo e(url('/')); ?>/post/<?php echo e($sidebar->post_name); ?>"><?php echo e($sidebar->post_title); ?></a>
+                        <a  class="home_page_title" href="<?php echo e(url('/')); ?>/<?php echo e($sidebar->post_name); ?>"><?php echo e($sidebar->post_title); ?></a>
                     </div>
 
 

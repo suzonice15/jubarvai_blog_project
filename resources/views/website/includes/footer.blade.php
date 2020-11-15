@@ -28,7 +28,7 @@
                         </a><!-- s-left -->
 
                         <div class="s-right pl-10">
-                            <h5><a href="#"><b>{{$sidebar->post_title}}</b></a></h5>
+                            <h5><a href="{{url('/')}}/{{$sidebar->post_name}}"><b>{{$sidebar->post_title}}</b></a></h5>
                             <ul class="mtb-5 list-li-mr-20 color-ash">
                                 <li><i class="mr-5 font-12 ion-clock"></i>{{ date("M d Y",strtotime($sidebar->modified_time)) }}</li>
                                 <li><i class="mr-5 font-12 ion-eye"></i>{{$sidebar->visitor}}</li>
@@ -64,7 +64,7 @@
 
                     foreach ($categorys as $category) {
                     ?>
-                    <li><a href="{{url('/')}}/category/{{$category->category_title}}">{{$category->category_title}}</a></li>
+                    <li><a href="{{url('/')}}/category/{{$category->category_name}}">{{$category->category_title}}</a></li>
 
 
                     <?php }} ?>               </ul>
